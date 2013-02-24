@@ -12,7 +12,6 @@
 		32622AC216D9A034003E7A26 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622AC116D9A034003E7A26 /* CoreGraphics.framework */; };
 		32622AC816D9A034003E7A26 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32622AC616D9A034003E7A26 /* InfoPlist.strings */; };
 		32622ACA16D9A034003E7A26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622AC916D9A034003E7A26 /* main.m */; };
-		32622ACE16D9A034003E7A26 /* RunAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622ACD16D9A034003E7A26 /* RunAppDelegate.m */; };
 		32622AD016D9A034003E7A26 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 32622ACF16D9A034003E7A26 /* Default.png */; };
 		32622AD216D9A034003E7A26 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32622AD116D9A034003E7A26 /* Default@2x.png */; };
 		32622AD416D9A034003E7A26 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32622AD316D9A034003E7A26 /* Default-568h@2x.png */; };
@@ -23,6 +22,10 @@
 		32622AE416D9A035003E7A26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622ABF16D9A034003E7A26 /* Foundation.framework */; };
 		32622AEC16D9A035003E7A26 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32622AEA16D9A035003E7A26 /* InfoPlist.strings */; };
 		32622AEF16D9A035003E7A26 /* RunTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622AEE16D9A035003E7A26 /* RunTests.m */; };
+		32622B0616D9A191003E7A26 /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622AF916D9A190003E7A26 /* DrawingView.m */; };
+		32622B0816D9A191003E7A26 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32622AFB16D9A191003E7A26 /* MainStoryboard.storyboard */; };
+		32622B0C16D9A191003E7A26 /* UIBezierPath-Points.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622B0316D9A191003E7A26 /* UIBezierPath-Points.m */; };
+		32622B0D16D9A191003E7A26 /* UIBezierPath-Smoothing.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622B0516D9A191003E7A26 /* UIBezierPath-Smoothing.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +47,6 @@
 		32622AC716D9A034003E7A26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32622AC916D9A034003E7A26 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32622ACB16D9A034003E7A26 /* Run-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Run-Prefix.pch"; sourceTree = "<group>"; };
-		32622ACC16D9A034003E7A26 /* RunAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RunAppDelegate.h; sourceTree = "<group>"; };
-		32622ACD16D9A034003E7A26 /* RunAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunAppDelegate.m; sourceTree = "<group>"; };
 		32622ACF16D9A034003E7A26 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		32622AD116D9A034003E7A26 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		32622AD316D9A034003E7A26 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -58,6 +59,18 @@
 		32622AEB16D9A035003E7A26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32622AED16D9A035003E7A26 /* RunTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RunTests.h; sourceTree = "<group>"; };
 		32622AEE16D9A035003E7A26 /* RunTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunTests.m; sourceTree = "<group>"; };
+		32622AF816D9A190003E7A26 /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingView.h; sourceTree = "<group>"; };
+		32622AF916D9A190003E7A26 /* DrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingView.m; sourceTree = "<group>"; };
+		32622AFA16D9A190003E7A26 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32622AFB16D9A191003E7A26 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		32622AFC16D9A191003E7A26 /* Run-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Run-Info.plist"; sourceTree = "<group>"; };
+		32622AFD16D9A191003E7A26 /* Run-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Run-Prefix.pch"; sourceTree = "<group>"; };
+		32622B0016D9A191003E7A26 /* RunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunViewController.h; sourceTree = "<group>"; };
+		32622B0116D9A191003E7A26 /* RunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunViewController.m; sourceTree = "<group>"; };
+		32622B0216D9A191003E7A26 /* UIBezierPath-Points.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath-Points.h"; sourceTree = "<group>"; };
+		32622B0316D9A191003E7A26 /* UIBezierPath-Points.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath-Points.m"; sourceTree = "<group>"; };
+		32622B0416D9A191003E7A26 /* UIBezierPath-Smoothing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath-Smoothing.h"; sourceTree = "<group>"; };
+		32622B0516D9A191003E7A26 /* UIBezierPath-Smoothing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath-Smoothing.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,8 +130,18 @@
 		32622AC316D9A034003E7A26 /* Run */ = {
 			isa = PBXGroup;
 			children = (
-				32622ACC16D9A034003E7A26 /* RunAppDelegate.h */,
-				32622ACD16D9A034003E7A26 /* RunAppDelegate.m */,
+				32622AF816D9A190003E7A26 /* DrawingView.h */,
+				32622AF916D9A190003E7A26 /* DrawingView.m */,
+				32622AFA16D9A190003E7A26 /* main.m */,
+				32622AFB16D9A191003E7A26 /* MainStoryboard.storyboard */,
+				32622AFC16D9A191003E7A26 /* Run-Info.plist */,
+				32622AFD16D9A191003E7A26 /* Run-Prefix.pch */,
+				32622B0016D9A191003E7A26 /* RunViewController.h */,
+				32622B0116D9A191003E7A26 /* RunViewController.m */,
+				32622B0216D9A191003E7A26 /* UIBezierPath-Points.h */,
+				32622B0316D9A191003E7A26 /* UIBezierPath-Points.m */,
+				32622B0416D9A191003E7A26 /* UIBezierPath-Smoothing.h */,
+				32622B0516D9A191003E7A26 /* UIBezierPath-Smoothing.m */,
 				32622AD516D9A034003E7A26 /* MainStoryboard.storyboard */,
 				32622AD816D9A034003E7A26 /* RunViewController.h */,
 				32622AD916D9A034003E7A26 /* RunViewController.m */,
@@ -237,6 +260,7 @@
 				32622AD216D9A034003E7A26 /* Default@2x.png in Resources */,
 				32622AD416D9A034003E7A26 /* Default-568h@2x.png in Resources */,
 				32622AD716D9A034003E7A26 /* MainStoryboard.storyboard in Resources */,
+				32622B0816D9A191003E7A26 /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,8 +296,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				32622ACA16D9A034003E7A26 /* main.m in Sources */,
-				32622ACE16D9A034003E7A26 /* RunAppDelegate.m in Sources */,
 				32622ADA16D9A034003E7A26 /* RunViewController.m in Sources */,
+				32622B0616D9A191003E7A26 /* DrawingView.m in Sources */,
+				32622B0C16D9A191003E7A26 /* UIBezierPath-Points.m in Sources */,
+				32622B0D16D9A191003E7A26 /* UIBezierPath-Smoothing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
