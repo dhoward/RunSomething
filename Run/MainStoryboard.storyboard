@@ -19,10 +19,10 @@
             </objects>
             <point key="canvasLocation" x="-556" y="21"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="okz-Qw-lQP">
             <objects>
-                <viewController id="Xnw-Ek-Yqr" sceneMemberID="viewController">
+                <viewController id="Xnw-Ek-Yqr" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rmp-xm-7kJ">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -42,6 +42,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="FBLogin:" destination="Xnw-Ek-Yqr" eventType="touchUpInside" id="OKL-8J-AKc"/>
                                     <segue destination="KEW-nJ-WNT" kind="push" id="uhe-17-0ic"/>
                                 </connections>
                             </button>
@@ -217,10 +218,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="F79-zB-UAc" firstAttribute="leading" secondItem="8NG-Se-A1E" secondAttribute="leading" type="default" id="1yt-1h-kc9"/>
-                            <constraint firstItem="F79-zB-UAc" firstAttribute="top" secondItem="8NG-Se-A1E" secondAttribute="top" type="default" id="JHa-Nd-GiX"/>
-                            <constraint firstItem="F79-zB-UAc" firstAttribute="trailing" secondItem="8NG-Se-A1E" secondAttribute="trailing" type="default" id="lTj-RB-5gB"/>
-                            <constraint firstItem="F79-zB-UAc" firstAttribute="bottom" secondItem="8NG-Se-A1E" secondAttribute="bottom" type="default" id="vy9-Je-idh"/>
+                            <constraint firstItem="F79-zB-UAc" firstAttribute="leading" secondItem="8NG-Se-A1E" secondAttribute="leading" type="default" id="Omr-Zt-nfG"/>
+                            <constraint firstItem="F79-zB-UAc" firstAttribute="bottom" secondItem="8NG-Se-A1E" secondAttribute="bottom" type="default" id="VvM-Iu-oAR"/>
+                            <constraint firstItem="F79-zB-UAc" firstAttribute="trailing" secondItem="8NG-Se-A1E" secondAttribute="trailing" type="default" id="WHj-zH-5Rx"/>
+                            <constraint firstItem="F79-zB-UAc" firstAttribute="top" secondItem="8NG-Se-A1E" secondAttribute="top" type="default" id="Yee-T4-dvf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="O7B-0f-9g2"/>
@@ -233,6 +234,30 @@
             <point key="canvasLocation" x="850" y="21"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="FBLogin:"/>
+            </relationships>
+        </class>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="map" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RunViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RunViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="setColor:"/>
+                <relationship kind="action" name="setLineSize:"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

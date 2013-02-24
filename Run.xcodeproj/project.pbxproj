@@ -27,6 +27,11 @@
 		32622B0E16D9AF12003E7A26 /* RunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622B0116D9A191003E7A26 /* RunViewController.m */; };
 		32622B1016D9BDED003E7A26 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622B0F16D9BDED003E7A26 /* MapKit.framework */; };
 		32622B1316D9C08A003E7A26 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622B1216D9C08A003E7A26 /* MapViewController.m */; };
+		32622B1516DA964F003E7A26 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622B1416DA964F003E7A26 /* FacebookSDK.framework */; };
+		32622B1716DA9A81003E7A26 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622B1616DA9A81003E7A26 /* Social.framework */; };
+		32622B1916DA9FA8003E7A26 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622B1816DA9FA8003E7A26 /* AdSupport.framework */; };
+		32622B1B16DA9FAE003E7A26 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622B1A16DA9FAE003E7A26 /* Accounts.framework */; };
+		32622B1E16DAA692003E7A26 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622B1D16DAA692003E7A26 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +77,12 @@
 		32622B0F16D9BDED003E7A26 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		32622B1116D9C036003E7A26 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		32622B1216D9C08A003E7A26 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		32622B1416DA964F003E7A26 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		32622B1616DA9A81003E7A26 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		32622B1816DA9FA8003E7A26 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		32622B1A16DA9FAE003E7A26 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		32622B1C16DAA692003E7A26 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		32622B1D16DAA692003E7A26 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,10 +90,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32622B1B16DA9FAE003E7A26 /* Accounts.framework in Frameworks */,
+				32622B1916DA9FA8003E7A26 /* AdSupport.framework in Frameworks */,
+				32622B1716DA9A81003E7A26 /* Social.framework in Frameworks */,
 				32622B1016D9BDED003E7A26 /* MapKit.framework in Frameworks */,
 				32622ABE16D9A034003E7A26 /* UIKit.framework in Frameworks */,
 				32622AC016D9A034003E7A26 /* Foundation.framework in Frameworks */,
 				32622AC216D9A034003E7A26 /* CoreGraphics.framework in Frameworks */,
+				32622B1516DA964F003E7A26 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +117,9 @@
 		32622AB116D9A034003E7A26 = {
 			isa = PBXGroup;
 			children = (
+				32622B1A16DA9FAE003E7A26 /* Accounts.framework */,
+				32622B1816DA9FA8003E7A26 /* AdSupport.framework */,
+				32622B1616DA9A81003E7A26 /* Social.framework */,
 				32622B0F16D9BDED003E7A26 /* MapKit.framework */,
 				32622AC316D9A034003E7A26 /* Run */,
 				32622AE716D9A035003E7A26 /* RunTests */,
@@ -122,6 +140,7 @@
 		32622ABC16D9A034003E7A26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				32622B1416DA964F003E7A26 /* FacebookSDK.framework */,
 				32622ABD16D9A034003E7A26 /* UIKit.framework */,
 				32622ABF16D9A034003E7A26 /* Foundation.framework */,
 				32622AC116D9A034003E7A26 /* CoreGraphics.framework */,
@@ -148,6 +167,8 @@
 				32622AC416D9A034003E7A26 /* Supporting Files */,
 				32622B1116D9C036003E7A26 /* MapViewController.h */,
 				32622B1216D9C08A003E7A26 /* MapViewController.m */,
+				32622B1C16DAA692003E7A26 /* LoginViewController.h */,
+				32622B1D16DAA692003E7A26 /* LoginViewController.m */,
 			);
 			path = Run;
 			sourceTree = "<group>";
@@ -302,6 +323,7 @@
 				32622B0C16D9A191003E7A26 /* UIBezierPath-Points.m in Sources */,
 				32622B0D16D9A191003E7A26 /* UIBezierPath-Smoothing.m in Sources */,
 				32622B1316D9C08A003E7A26 /* MapViewController.m in Sources */,
+				32622B1E16DAA692003E7A26 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,9 +424,14 @@
 		32622AF316D9A035003E7A26 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Run/Run-Prefix.pch";
 				INFOPLIST_FILE = "Run/Run-Info.plist";
+				"OTHER_LDFLAGS[arch=*]" = "-lsqlite3.0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -413,9 +440,14 @@
 		32622AF416D9A035003E7A26 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Run/Run-Prefix.pch";
 				INFOPLIST_FILE = "Run/Run-Info.plist";
+				"OTHER_LDFLAGS[arch=*]" = "-lsqlite3.0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
