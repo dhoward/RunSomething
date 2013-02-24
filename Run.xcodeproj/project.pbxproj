@@ -15,8 +15,6 @@
 		32622AD016D9A034003E7A26 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 32622ACF16D9A034003E7A26 /* Default.png */; };
 		32622AD216D9A034003E7A26 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32622AD116D9A034003E7A26 /* Default@2x.png */; };
 		32622AD416D9A034003E7A26 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32622AD316D9A034003E7A26 /* Default-568h@2x.png */; };
-		32622AD716D9A034003E7A26 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32622AD516D9A034003E7A26 /* MainStoryboard.storyboard */; };
-		32622ADA16D9A034003E7A26 /* RunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622AD916D9A034003E7A26 /* RunViewController.m */; };
 		32622AE216D9A035003E7A26 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622AE116D9A035003E7A26 /* SenTestingKit.framework */; };
 		32622AE316D9A035003E7A26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622ABD16D9A034003E7A26 /* UIKit.framework */; };
 		32622AE416D9A035003E7A26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622ABF16D9A034003E7A26 /* Foundation.framework */; };
@@ -26,6 +24,9 @@
 		32622B0816D9A191003E7A26 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32622AFB16D9A191003E7A26 /* MainStoryboard.storyboard */; };
 		32622B0C16D9A191003E7A26 /* UIBezierPath-Points.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622B0316D9A191003E7A26 /* UIBezierPath-Points.m */; };
 		32622B0D16D9A191003E7A26 /* UIBezierPath-Smoothing.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622B0516D9A191003E7A26 /* UIBezierPath-Smoothing.m */; };
+		32622B0E16D9AF12003E7A26 /* RunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622B0116D9A191003E7A26 /* RunViewController.m */; };
+		32622B1016D9BDED003E7A26 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622B0F16D9BDED003E7A26 /* MapKit.framework */; };
+		32622B1316D9C08A003E7A26 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622B1216D9C08A003E7A26 /* MapViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,9 +51,6 @@
 		32622ACF16D9A034003E7A26 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		32622AD116D9A034003E7A26 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		32622AD316D9A034003E7A26 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		32622AD616D9A034003E7A26 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		32622AD816D9A034003E7A26 /* RunViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RunViewController.h; sourceTree = "<group>"; };
-		32622AD916D9A034003E7A26 /* RunViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunViewController.m; sourceTree = "<group>"; };
 		32622AE016D9A035003E7A26 /* RunTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		32622AE116D9A035003E7A26 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		32622AE916D9A035003E7A26 /* RunTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RunTests-Info.plist"; sourceTree = "<group>"; };
@@ -71,6 +69,9 @@
 		32622B0316D9A191003E7A26 /* UIBezierPath-Points.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath-Points.m"; sourceTree = "<group>"; };
 		32622B0416D9A191003E7A26 /* UIBezierPath-Smoothing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath-Smoothing.h"; sourceTree = "<group>"; };
 		32622B0516D9A191003E7A26 /* UIBezierPath-Smoothing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath-Smoothing.m"; sourceTree = "<group>"; };
+		32622B0F16D9BDED003E7A26 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		32622B1116D9C036003E7A26 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		32622B1216D9C08A003E7A26 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32622B1016D9BDED003E7A26 /* MapKit.framework in Frameworks */,
 				32622ABE16D9A034003E7A26 /* UIKit.framework in Frameworks */,
 				32622AC016D9A034003E7A26 /* Foundation.framework in Frameworks */,
 				32622AC216D9A034003E7A26 /* CoreGraphics.framework in Frameworks */,
@@ -100,6 +102,7 @@
 		32622AB116D9A034003E7A26 = {
 			isa = PBXGroup;
 			children = (
+				32622B0F16D9BDED003E7A26 /* MapKit.framework */,
 				32622AC316D9A034003E7A26 /* Run */,
 				32622AE716D9A035003E7A26 /* RunTests */,
 				32622ABC16D9A034003E7A26 /* Frameworks */,
@@ -142,10 +145,9 @@
 				32622B0316D9A191003E7A26 /* UIBezierPath-Points.m */,
 				32622B0416D9A191003E7A26 /* UIBezierPath-Smoothing.h */,
 				32622B0516D9A191003E7A26 /* UIBezierPath-Smoothing.m */,
-				32622AD516D9A034003E7A26 /* MainStoryboard.storyboard */,
-				32622AD816D9A034003E7A26 /* RunViewController.h */,
-				32622AD916D9A034003E7A26 /* RunViewController.m */,
 				32622AC416D9A034003E7A26 /* Supporting Files */,
+				32622B1116D9C036003E7A26 /* MapViewController.h */,
+				32622B1216D9C08A003E7A26 /* MapViewController.m */,
 			);
 			path = Run;
 			sourceTree = "<group>";
@@ -259,7 +261,6 @@
 				32622AD016D9A034003E7A26 /* Default.png in Resources */,
 				32622AD216D9A034003E7A26 /* Default@2x.png in Resources */,
 				32622AD416D9A034003E7A26 /* Default-568h@2x.png in Resources */,
-				32622AD716D9A034003E7A26 /* MainStoryboard.storyboard in Resources */,
 				32622B0816D9A191003E7A26 /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,11 +296,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32622B0E16D9AF12003E7A26 /* RunViewController.m in Sources */,
 				32622ACA16D9A034003E7A26 /* main.m in Sources */,
-				32622ADA16D9A034003E7A26 /* RunViewController.m in Sources */,
 				32622B0616D9A191003E7A26 /* DrawingView.m in Sources */,
 				32622B0C16D9A191003E7A26 /* UIBezierPath-Points.m in Sources */,
 				32622B0D16D9A191003E7A26 /* UIBezierPath-Smoothing.m in Sources */,
+				32622B1316D9C08A003E7A26 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,14 +330,6 @@
 				32622AC716D9A034003E7A26 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		32622AD516D9A034003E7A26 /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				32622AD616D9A034003E7A26 /* en */,
-			);
-			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 		32622AEA16D9A035003E7A26 /* InfoPlist.strings */ = {

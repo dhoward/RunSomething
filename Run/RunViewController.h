@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RunViewController : UIViewController
-
+@interface RunViewController : UIViewController {
+    CGPoint lastPoint;
+    UIImageView *drawImage;
+    BOOL mouseSwiped;
+    int mouseMoved;
+    float lineSize;
+    struct CGColor *color;
+}
 @end
