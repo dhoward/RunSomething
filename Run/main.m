@@ -86,25 +86,6 @@
         // No, display the login page.
     }
     
-    [FBSession.activeSession openWithCompletionHandler:^(FBSession *session,
-                                                         FBSessionState state,
-                                                         NSError *error) {
-        switch (state) {
-            case FBSessionStateClosedLoginFailed:
-            {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                    message:error.localizedDescription
-                                                                   delegate:nil
-                                                          cancelButtonTitle:@"OK"
-                                                          otherButtonTitles:nil];
-                [alertView show];
-            }
-                break;
-            default:
-                break;
-        }
-    }];
-    
     return YES;
 }
 @end

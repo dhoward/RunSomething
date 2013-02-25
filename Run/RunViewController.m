@@ -16,11 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	drawImage = [[UIImageView alloc] initWithImage:nil];
-	drawImage.frame = self.view.frame;
-	[self.view addSubview:drawImage];
 	mouseMoved = 0;
     lineSize = 5.0;
+    mapView.delegate = self;
 }
 
 - (IBAction)setLineSize:(id)sender {
@@ -44,29 +42,46 @@
     }
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	
+- (void)mapView:(MKMapView *)aMapView didUpdateUserLocation:(MKUserLocation *)aUserLocation {
+    
+    NSLog(@"didUpdateUserLocation");
+    
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
+    span.latitudeDelta = 0.005;
+    span.longitudeDelta = 0.005;
+    CLLocationCoordinate2D location;
+    location.latitude = aUserLocation.coordinate.latitude;
+    location.longitude = aUserLocation.coordinate.longitude;
+    region.span = span;
+    region.center = location;
+    [aMapView setRegion:region animated:YES];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {	
 	mouseSwiped = NO;
 	UITouch *touch = [touches anyObject];
 	
 	if ([touch tapCount] == 2) {
-		drawImage.image = nil;
+		drawing.image = nil;
 		return;
 	}
     
 	lastPoint = [touch locationInView:self.view];
-    
+    lastPoint = [mapView convertCoordinate:mapView.userLocation.coordinate toPointToView:mapView];
 }
 
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 	mouseSwiped = YES;
-	
+    
 	UITouch *touch = [touches anyObject];
 	CGPoint currentPoint = [touch locationInView:self.view];
+    
+    currentPoint = [mapView convertCoordinate:mapView.userLocation.coordinate toPointToView:mapView];
 	
 	UIGraphicsBeginImageContext(self.view.frame.size);
-	[drawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+	[drawing.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
 	CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
 	CGContextSetLineWidth(UIGraphicsGetCurrentContext(), lineSize);
 	CGContextSetStrokeColorWithColor(UIGraphicsGetCurrentContext(), color);
@@ -74,7 +89,7 @@
 	CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
 	CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), currentPoint.x, currentPoint.y);
 	CGContextStrokePath(UIGraphicsGetCurrentContext());
-	drawImage.image = UIGraphicsGetImageFromCurrentImageContext();
+	drawing.image = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
 	
 	lastPoint = currentPoint;
@@ -87,19 +102,36 @@
     
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+- (IBAction)touchedEnded:(id) sender {
+    
+	CGPoint currentPoint = [mapView convertCoordinate:mapView.userLocation.coordinate toPointToView:mapView];
+	
+	UIGraphicsBeginImageContext(self.view.frame.size);
+	[drawing.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+	CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
+	CGContextSetLineWidth(UIGraphicsGetCurrentContext(), lineSize);
+	CGContextSetStrokeColorWithColor(UIGraphicsGetCurrentContext(), color);
+	CGContextBeginPath(UIGraphicsGetCurrentContext());
+	CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
+	CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), currentPoint.x, currentPoint.y);
+	CGContextStrokePath(UIGraphicsGetCurrentContext());
+	drawing.image = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+    
+}
+
+- (void)drawUserPoint:(NSSet *)touches withEvent:(UIEvent *)event {
 	
 	UITouch *touch = [touches anyObject];
 	
 	if ([touch tapCount] == 2) {
-		drawImage.image = nil;
+		drawing.image = nil;
 		return;
 	}
 	
-	
 	if(!mouseSwiped) {
 		UIGraphicsBeginImageContext(self.view.frame.size);
-		[drawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+		[drawing.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
 		CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
 		CGContextSetLineWidth(UIGraphicsGetCurrentContext(), 5.0);
 		CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 1.0, 0.0, 0.0, 1.0);
@@ -107,7 +139,7 @@
 		CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
 		CGContextStrokePath(UIGraphicsGetCurrentContext());
 		CGContextFlush(UIGraphicsGetCurrentContext());
-		drawImage.image = UIGraphicsGetImageFromCurrentImageContext();
+		drawing.image = UIGraphicsGetImageFromCurrentImageContext();
 		UIGraphicsEndImageContext();
 	}
 }

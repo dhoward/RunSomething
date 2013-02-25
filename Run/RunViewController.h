@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface RunViewController : UIViewController {
+@interface RunViewController : UIViewController <MKMapViewDelegate> {
     CGPoint lastPoint;
+    __weak IBOutlet UIImageView *drawing;
+    __weak IBOutlet MKMapView *mapView;
     UIImageView *drawImage;
     BOOL mouseSwiped;
     int mouseMoved;
     float lineSize;
     struct CGColor *color;
 }
+-(IBAction)drawUserPoint:(id)sender;
 @end

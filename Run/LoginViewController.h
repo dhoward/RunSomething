@@ -11,6 +11,5 @@
 
 @interface LoginViewController : UIViewController
 -(IBAction)FBLogin:(id)sender;
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
 - (void)sessionStateChanged:(FBSession *)session state:(FBSessionState)state error:(NSError *)error;
 @end

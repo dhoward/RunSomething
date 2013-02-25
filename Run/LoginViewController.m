@@ -14,14 +14,6 @@
 
 @implementation LoginViewController
 
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation
-{
-    return [FBSession.activeSession handleOpenURL:url];
-}
-
 - (void)sessionStateChanged:(FBSession *)session
                       state:(FBSessionState) state
                       error:(NSError *)error
@@ -67,9 +59,15 @@
                 }
                     break;
                 default:
+                    NSLog(@"DOING DEFAULT");
+                    [self performSegueWithIdentifier: @"loggedInSegue" sender: self];
                     break;
             }
         }];
+    }else{
+        NSLog(@"YO YO GO GO");
+        [self performSegueWithIdentifier: @"loggedInSegue" sender: self];
+
     }
     
 }
