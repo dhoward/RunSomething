@@ -18,6 +18,7 @@
     int mouseMoved;
     float lineSize;
     struct CGColor *color;
+    bool isDrawing;
 }
--(IBAction)drawUserPoint:(id)sender;
+-(void)drawUserPoint;
 @end

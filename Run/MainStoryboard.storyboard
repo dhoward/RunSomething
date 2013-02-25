@@ -176,7 +176,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="drawUserPoint:" destination="KEW-nJ-WNT" eventType="touchUpInside" id="ywy-Y3-1j8"/>
+                                    <action selector="enableDRawing:" destination="KEW-nJ-WNT" eventType="touchUpInside" id="hO8-DI-SHg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -233,6 +233,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RunViewController.h"/>
             <relationships>
                 <relationship kind="action" name="drawUserPoint:"/>
+                <relationship kind="action" name="enableDRawing:"/>
                 <relationship kind="action" name="setColor:"/>
                 <relationship kind="action" name="setLineSize:"/>
                 <relationship kind="outlet" name="drawing" candidateClass="UIImageView"/>
