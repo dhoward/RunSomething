@@ -102,7 +102,7 @@
     
 }
 
-- (IBAction)touchedEnded:(id) sender {
+- (IBAction)drawUserPoint:(id) sender {
     
 	CGPoint currentPoint = [mapView convertCoordinate:mapView.userLocation.coordinate toPointToView:mapView];
 	
@@ -120,7 +120,7 @@
     
 }
 
-- (void)drawUserPoint:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	
 	UITouch *touch = [touches anyObject];
 	
