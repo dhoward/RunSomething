@@ -20,6 +20,7 @@
     lineSize = 5.0;
     isDrawing = false;
     mapView.delegate = self;
+    mapInitted = false;
 }
 
 - (IBAction)setLineSize:(id)sender {
@@ -47,61 +48,22 @@
     
     NSLog(@"didUpdateUserLocation");
     [self drawUserPoint];
-    
-//    MKCoordinateRegion region;
-//    MKCoordinateSpan span;
-//    span.latitudeDelta = 0.005;
-//    span.longitudeDelta = 0.005;
-//    CLLocationCoordinate2D location;
-//    location.latitude = aUserLocation.coordinate.latitude;
-//    location.longitude = aUserLocation.coordinate.longitude;
-//    region.span = span;
-//    region.center = location;
-//    [aMapView setRegion:region animated:YES];
-}
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {	
-	mouseSwiped = NO;
-	UITouch *touch = [touches anyObject];
-	
-	if ([touch tapCount] == 2) {
-		drawing.image = nil;
-		return;
-	}
+    if(mapInitted){
+        return;
+    }
     
-	lastPoint = [touch locationInView:self.view];
-    lastPoint = [mapView convertCoordinate:mapView.userLocation.coordinate toPointToView:mapView];
-}
-
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-	mouseSwiped = YES;
-    
-	UITouch *touch = [touches anyObject];
-	CGPoint currentPoint = [touch locationInView:self.view];
-    
-    currentPoint = [mapView convertCoordinate:mapView.userLocation.coordinate toPointToView:mapView];
-	
-	UIGraphicsBeginImageContext(self.view.frame.size);
-	[drawing.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-	CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
-	CGContextSetLineWidth(UIGraphicsGetCurrentContext(), lineSize);
-	CGContextSetStrokeColorWithColor(UIGraphicsGetCurrentContext(), color);
-	CGContextBeginPath(UIGraphicsGetCurrentContext());
-	CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
-	CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), currentPoint.x, currentPoint.y);
-	CGContextStrokePath(UIGraphicsGetCurrentContext());
-	drawing.image = UIGraphicsGetImageFromCurrentImageContext();
-	UIGraphicsEndImageContext();
-	
-	lastPoint = currentPoint;
-    
-	mouseMoved++;
-	
-	if (mouseMoved == 10) {
-		mouseMoved = 0;
-	}
-    
+    mapInitted = true;
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
+    span.latitudeDelta = 0.005;
+    span.longitudeDelta = 0.005;
+    CLLocationCoordinate2D location;
+    location.latitude = aUserLocation.coordinate.latitude;
+    location.longitude = aUserLocation.coordinate.longitude;
+    region.span = span;
+    region.center = location;
+    [aMapView setRegion:region animated:NO];
 }
 
 - (IBAction)enableDRawing:(id) sender {
@@ -110,11 +72,12 @@
 
 - (void)drawUserPoint {
     
+    CGPoint currentPoint = [mapView convertCoordinate:mapView.userLocation.coordinate toPointToView:mapView];
+    
     if(!isDrawing){
+        lastPoint = currentPoint;
         return;
     }
-    
-	CGPoint currentPoint = [mapView convertCoordinate:mapView.userLocation.coordinate toPointToView:mapView];
 	
 	UIGraphicsBeginImageContext(self.view.frame.size);
 	[drawing.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
@@ -154,6 +117,16 @@
 		drawing.image = UIGraphicsGetImageFromCurrentImageContext();
 		UIGraphicsEndImageContext();
 	}
+}
+
+-(IBAction)captureScreen:(id)sender
+{
+    UIGraphicsBeginImageContext(drawing.frame.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [drawing.layer renderInContext:context];
+    UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil);
 }
 
 

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import <MapKit/MapKit.h>
 
 @interface RunViewController : UIViewController <MKMapViewDelegate> {
@@ -19,6 +20,7 @@
     float lineSize;
     struct CGColor *color;
     bool isDrawing;
+    bool mapInitted;
 }
 -(void)drawUserPoint;
 @end

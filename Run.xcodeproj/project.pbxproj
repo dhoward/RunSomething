@@ -32,6 +32,7 @@
 		32622B1916DA9FA8003E7A26 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622B1816DA9FA8003E7A26 /* AdSupport.framework */; };
 		32622B1B16DA9FAE003E7A26 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622B1A16DA9FAE003E7A26 /* Accounts.framework */; };
 		32622B1E16DAA692003E7A26 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622B1D16DAA692003E7A26 /* LoginViewController.m */; };
+		32622B2116DB56F9003E7A26 /* FriendPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622B2016DB56F9003E7A26 /* FriendPickerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,8 @@
 		32622B1A16DA9FAE003E7A26 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		32622B1C16DAA692003E7A26 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		32622B1D16DAA692003E7A26 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		32622B1F16DB56F9003E7A26 /* FriendPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendPickerViewController.h; sourceTree = "<group>"; };
+		32622B2016DB56F9003E7A26 /* FriendPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendPickerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +172,8 @@
 				32622B1216D9C08A003E7A26 /* MapViewController.m */,
 				32622B1C16DAA692003E7A26 /* LoginViewController.h */,
 				32622B1D16DAA692003E7A26 /* LoginViewController.m */,
+				32622B1F16DB56F9003E7A26 /* FriendPickerViewController.h */,
+				32622B2016DB56F9003E7A26 /* FriendPickerViewController.m */,
 			);
 			path = Run;
 			sourceTree = "<group>";
@@ -324,6 +329,7 @@
 				32622B0D16D9A191003E7A26 /* UIBezierPath-Smoothing.m in Sources */,
 				32622B1316D9C08A003E7A26 /* MapViewController.m in Sources */,
 				32622B1E16DAA692003E7A26 /* LoginViewController.m in Sources */,
+				32622B2116DB56F9003E7A26 /* FriendPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
