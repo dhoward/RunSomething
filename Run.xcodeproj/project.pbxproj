@@ -33,6 +33,10 @@
 		32622B1B16DA9FAE003E7A26 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622B1A16DA9FAE003E7A26 /* Accounts.framework */; };
 		32622B1E16DAA692003E7A26 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622B1D16DAA692003E7A26 /* LoginViewController.m */; };
 		32622B2116DB56F9003E7A26 /* FriendPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622B2016DB56F9003E7A26 /* FriendPickerViewController.m */; };
+		32622B2416DD758F003E7A26 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32622B2216DD758F003E7A26 /* Model.xcdatamodeld */; };
+		32622B2716DD775F003E7A26 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622B2616DD775F003E7A26 /* Game.m */; };
+		32622B2A16DD7794003E7A26 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622B2916DD7794003E7A26 /* User.m */; };
+		32622B2C16DD791D003E7A26 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622B2B16DD791D003E7A26 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +90,12 @@
 		32622B1D16DAA692003E7A26 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		32622B1F16DB56F9003E7A26 /* FriendPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendPickerViewController.h; sourceTree = "<group>"; };
 		32622B2016DB56F9003E7A26 /* FriendPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendPickerViewController.m; sourceTree = "<group>"; };
+		32622B2316DD758F003E7A26 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		32622B2516DD775F003E7A26 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		32622B2616DD775F003E7A26 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		32622B2816DD7793003E7A26 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		32622B2916DD7794003E7A26 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		32622B2B16DD791D003E7A26 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32622B2C16DD791D003E7A26 /* CoreData.framework in Frameworks */,
 				32622B1B16DA9FAE003E7A26 /* Accounts.framework in Frameworks */,
 				32622B1916DA9FA8003E7A26 /* AdSupport.framework in Frameworks */,
 				32622B1716DA9A81003E7A26 /* Social.framework in Frameworks */,
@@ -120,10 +131,7 @@
 		32622AB116D9A034003E7A26 = {
 			isa = PBXGroup;
 			children = (
-				32622B1A16DA9FAE003E7A26 /* Accounts.framework */,
-				32622B1816DA9FA8003E7A26 /* AdSupport.framework */,
-				32622B1616DA9A81003E7A26 /* Social.framework */,
-				32622B0F16D9BDED003E7A26 /* MapKit.framework */,
+				32622B2B16DD791D003E7A26 /* CoreData.framework */,
 				32622AC316D9A034003E7A26 /* Run */,
 				32622AE716D9A035003E7A26 /* RunTests */,
 				32622ABC16D9A034003E7A26 /* Frameworks */,
@@ -143,6 +151,10 @@
 		32622ABC16D9A034003E7A26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				32622B1A16DA9FAE003E7A26 /* Accounts.framework */,
+				32622B1816DA9FA8003E7A26 /* AdSupport.framework */,
+				32622B1616DA9A81003E7A26 /* Social.framework */,
+				32622B0F16D9BDED003E7A26 /* MapKit.framework */,
 				32622B1416DA964F003E7A26 /* FacebookSDK.framework */,
 				32622ABD16D9A034003E7A26 /* UIKit.framework */,
 				32622ABF16D9A034003E7A26 /* Foundation.framework */,
@@ -174,6 +186,11 @@
 				32622B1D16DAA692003E7A26 /* LoginViewController.m */,
 				32622B1F16DB56F9003E7A26 /* FriendPickerViewController.h */,
 				32622B2016DB56F9003E7A26 /* FriendPickerViewController.m */,
+				32622B2216DD758F003E7A26 /* Model.xcdatamodeld */,
+				32622B2516DD775F003E7A26 /* Game.h */,
+				32622B2616DD775F003E7A26 /* Game.m */,
+				32622B2816DD7793003E7A26 /* User.h */,
+				32622B2916DD7794003E7A26 /* User.m */,
 			);
 			path = Run;
 			sourceTree = "<group>";
@@ -330,6 +347,9 @@
 				32622B1316D9C08A003E7A26 /* MapViewController.m in Sources */,
 				32622B1E16DAA692003E7A26 /* LoginViewController.m in Sources */,
 				32622B2116DB56F9003E7A26 /* FriendPickerViewController.m in Sources */,
+				32622B2416DD758F003E7A26 /* Model.xcdatamodeld in Sources */,
+				32622B2716DD775F003E7A26 /* Game.m in Sources */,
+				32622B2A16DD7794003E7A26 /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,7 +403,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Howard (9Q9BFZ6Z3W)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: Daniel Howard (9Q9BFZ6Z3W)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -398,6 +419,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "EBAD4A37-9F29-47C8-BBD0-A7D2759CB94F";
+				"PROVISIONING_PROFILE[sdk=*]" = "EBAD4A37-9F29-47C8-BBD0-A7D2759CB94F";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -414,7 +437,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Howard (9Q9BFZ6Z3W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Howard (9Q9BFZ6Z3W)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -422,6 +446,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "EBAD4A37-9F29-47C8-BBD0-A7D2759CB94F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EBAD4A37-9F29-47C8-BBD0-A7D2759CB94F";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -438,7 +464,7 @@
 				GCC_PREFIX_HEADER = "Run/Run-Prefix.pch";
 				INFOPLIST_FILE = "Run/Run-Info.plist";
 				"OTHER_LDFLAGS[arch=*]" = "-lsqlite3.0";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Run;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -454,7 +480,7 @@
 				GCC_PREFIX_HEADER = "Run/Run-Prefix.pch";
 				INFOPLIST_FILE = "Run/Run-Info.plist";
 				"OTHER_LDFLAGS[arch=*]" = "-lsqlite3.0";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Run;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -522,6 +548,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		32622B2216DD758F003E7A26 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				32622B2316DD758F003E7A26 /* Model.xcdatamodel */,
+			);
+			currentVersion = 32622B2316DD758F003E7A26 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 32622AB216D9A034003E7A26 /* Project object */;
 }

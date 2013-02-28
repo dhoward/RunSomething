@@ -84,15 +84,29 @@
                                     <action selector="pickFriendsButtonClick:" destination="kYV-Vd-Awd" eventType="touchUpInside" id="jW1-Qd-Wv7"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7ks-pn-VhC">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="271" id="ItH-yO-uc5"/>
+                                    <constraint firstAttribute="height" constant="369" id="TzW-2C-7dh"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="kYV-Vd-Awd" id="pO7-z2-ft7"/>
+                                    <outlet property="delegate" destination="kYV-Vd-Awd" id="fPD-Yg-CH0"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2Y0-pU-L6u" firstAttribute="centerX" secondItem="Rgt-qA-k3C" secondAttribute="centerX" type="default" id="UNc-qD-LC4"/>
+                            <constraint firstAttribute="trailing" secondItem="7ks-pn-VhC" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="YQe-gb-wEl"/>
                             <constraint firstItem="2Y0-pU-L6u" firstAttribute="top" secondItem="Rgt-qA-k3C" secondAttribute="top" constant="39" id="f7b-wf-Tq6"/>
+                            <constraint firstItem="7ks-pn-VhC" firstAttribute="top" secondItem="Rgt-qA-k3C" secondAttribute="top" constant="98" id="q6B-8x-IfO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xPP-1e-Icr"/>
                     <connections>
+                        <outlet property="gamesTable" destination="7ks-pn-VhC" id="Y9G-zO-tNY"/>
                         <segue destination="KEW-nJ-WNT" kind="push" identifier="startGameSegue" id="se5-ja-PPu"/>
                     </connections>
                 </viewController>
@@ -282,6 +296,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendPickerViewController.h"/>
             <relationships>
                 <relationship kind="action" name="pickFriendsButtonClick:"/>
+                <relationship kind="outlet" name="gamesTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="selectedFriendsView" candidateClass="UITextView"/>
             </relationships>
         </class>
