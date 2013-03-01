@@ -16,30 +16,31 @@
 @synthesize friendPickerController = _friendPickerController;
 
 - (void) viewDidLoad {
+    NSLog(@"hey");
+    NSManagedObjectContext *context = [(id)[[UIApplication sharedApplication] delegate] managedObjectContext];
     
-//    NSManagedObjectContext *context = [(id)[[UIApplication sharedApplication] delegate] managedObjectContext];
-//    
-//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Game"
-//                                              inManagedObjectContext:context];
-//    [fetchRequest setEntity:entity];
-//    NSError *error;
-//    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-//    for (Game *game in fetchedObjects) {
-//        //NSLog(@"P1: %@", game.player1);
-//        //NSLog(@"P2: %@", game.player2);
-//    }
-//    
-//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-//    [_gamesTable insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-//                          withRowAnimation:UITableViewRowAnimationFade];
-//    [_gamesTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Game"
+                                              inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSError *error;
+    _games = [context executeFetchRequest:fetchRequest error:&error];
+    for (Game *game in _games) {
+        NSLog(@"P1: %@", game.player1);
+        NSLog(@"P2: %@", game.player2);
+    }
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [_gamesTable insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                          withRowAnimation:UITableViewRowAnimationFade];
+    //[_gamesTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //return [_games count];
-    return 2;
+    NSLog(@"The content of arry is%@",_games);
+    return [_games count];
+    //return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -52,11 +53,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    NSLog(@"GAME");
-    NSNumber *id = [(Game*)[_games objectAtIndex:indexPath.row] id];
-    NSString *idString = [id stringValue];
-    cell.textLabel.text = @"YO YO YO YO";
-    NSLog(@"%@", idString);
+//    NSLog(@"GAME");
+//    NSString *id = [[(Game*)[_games objectAtIndex:indexPath.row] player2] name];
+//    NSLog(@"The content of arry is%@",_games);
+//    NSString *idString = [id stringValue];
+//    cell.textLabel.text = idString;
+//    NSLog(@"%@", idString);
     return cell;
 }
 

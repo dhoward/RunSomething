@@ -14,6 +14,12 @@
 
 @implementation LoginViewController
 
+- (void) viewWillAppear:(BOOL)animated {
+    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
+        [self performSegueWithIdentifier: @"loggedInSegue" sender: self];
+    }
+}
+
 - (void)sessionStateChanged:(FBSession *)session
                       state:(FBSessionState) state
                       error:(NSError *)error
