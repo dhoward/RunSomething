@@ -11,7 +11,6 @@
 
 @implementation Game
 
-@dynamic id;
 @dynamic player1;
 @dynamic player2;
 

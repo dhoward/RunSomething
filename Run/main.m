@@ -2,39 +2,9 @@
 #import <CoreData/CoreData.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import <Parse/Parse.h>
-#import "UIBezierPath-Smoothing.h"
-#import "DrawingView.h"
 #import "Game.h"
 
 #define DB_PATH [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]
-
-@interface DrawingViewController : UIViewController
-@end
-
-@implementation DrawingViewController
-- (void) clear
-{
-    [(DrawingView *)self.view clear];
-}
-
-- (void) loadView
-{    
-    [super loadView];
-    RESIZABLE(self.view);
-}
-
-- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    [self clear];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-	return YES;
-}
-@end
-
-#pragma mark -
 
 #pragma mark Application Setup
 @interface RunAppDelegate : NSObject <UIApplicationDelegate>

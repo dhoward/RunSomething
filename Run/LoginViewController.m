@@ -15,8 +15,8 @@
 @implementation LoginViewController
 
 - (void) viewWillAppear:(BOOL)animated {
-    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
-        [self performSegueWithIdentifier: @"loggedInSegue" sender: self];
+    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {        
+        [self FBLogin:nil];
     }
 }
 
@@ -65,15 +65,12 @@
                 }
                     break;
                 default:
-                    NSLog(@"DOING DEFAULT");
                     [self performSegueWithIdentifier: @"loggedInSegue" sender: self];
                     break;
             }
         }];
     }else{
-        NSLog(@"YO YO GO GO");
         [self performSegueWithIdentifier: @"loggedInSegue" sender: self];
-
     }
     
 }

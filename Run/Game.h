@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "User.h"
 
 
 @interface Game : NSManagedObject
 
-@property (nonatomic, retain) NSNumber *id;
-@property (nonatomic, retain) NSManagedObject *player1;
-@property (nonatomic, retain) NSManagedObject *player2;
+@property (nonatomic, retain) User *player1;
+@property (nonatomic, retain) User *player2;
 
 @end

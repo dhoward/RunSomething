@@ -13,6 +13,5 @@
 
 @dynamic name;
 @dynamic facebookId;
-@dynamic id;
 
 @end
