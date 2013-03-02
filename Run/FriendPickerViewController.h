@@ -14,7 +14,7 @@
 @property (strong, nonatomic) IBOutlet UITextView *selectedFriendsView;
 @property (retain, nonatomic) FBFriendPickerViewController *friendPickerController;
 @property (weak, nonatomic) IBOutlet UITableView *gamesTable;
-@property NSArray *games;
+@property NSMutableArray *games;
 
 - (IBAction)pickFriendsButtonClick:(id)sender;
 

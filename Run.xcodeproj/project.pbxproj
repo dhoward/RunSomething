@@ -44,6 +44,8 @@
 		32622B4016E0287B003E7A26 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622B3716E0287A003E7A26 /* Security.framework */; };
 		32622B4116E0287B003E7A26 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622B3816E0287A003E7A26 /* StoreKit.framework */; };
 		32622B4216E0287B003E7A26 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622B3916E0287B003E7A26 /* SystemConfiguration.framework */; };
+		32622B4416E1952C003E7A26 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32622B4316E1952C003E7A26 /* Icon.png */; };
+		32622B4616E19532003E7A26 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32622B4516E19531003E7A26 /* Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +108,8 @@
 		32622B3716E0287A003E7A26 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		32622B3816E0287A003E7A26 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		32622B3916E0287B003E7A26 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		32622B4316E1952C003E7A26 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		32622B4516E19531003E7A26 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,8 @@
 		32622AB116D9A034003E7A26 = {
 			isa = PBXGroup;
 			children = (
+				32622B4516E19531003E7A26 /* Icon@2x.png */,
+				32622B4316E1952C003E7A26 /* Icon.png */,
 				32622AC316D9A034003E7A26 /* Run */,
 				32622AE716D9A035003E7A26 /* RunTests */,
 				32622ABC16D9A034003E7A26 /* Frameworks */,
@@ -329,6 +335,8 @@
 				32622AD216D9A034003E7A26 /* Default@2x.png in Resources */,
 				32622AD416D9A034003E7A26 /* Default-568h@2x.png in Resources */,
 				32622B0816D9A191003E7A26 /* MainStoryboard.storyboard in Resources */,
+				32622B4416E1952C003E7A26 /* Icon.png in Resources */,
+				32622B4616E19532003E7A26 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

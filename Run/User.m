@@ -17,6 +17,7 @@
 - (void) init: (NSString*)theName withFacebookId: (NSString*)theId {
     self.facebookId = theId;
     self.name = theName;
+    NSLog(@"SET NAME AND ID:%@, %@", self.name, self.facebookId);
 }
 
 @end
