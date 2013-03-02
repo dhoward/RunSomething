@@ -13,8 +13,8 @@
 
 @property (strong, nonatomic) IBOutlet UITextView *selectedFriendsView;
 @property (retain, nonatomic) FBFriendPickerViewController *friendPickerController;
-@property NSArray *games;
 @property (weak, nonatomic) IBOutlet UITableView *gamesTable;
+@property NSArray *games;
 
 - (IBAction)pickFriendsButtonClick:(id)sender;
 

@@ -14,4 +14,9 @@
 @dynamic player1;
 @dynamic player2;
 
+- (void) initWithPlayer1: (User*)thePlayer1 andPlayer2: (User*)thePlayer2 {
+    self.player1 = thePlayer1;
+    self.player2 = thePlayer2;
+}
+
 @end

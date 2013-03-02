@@ -16,4 +16,6 @@
 @property (nonatomic, retain) User *player1;
 @property (nonatomic, retain) User *player2;
 
+- (void) initWithPlayer1: (User*)thePlayer1 andPlayer2: (User*)thePlayer2;
+
 @end

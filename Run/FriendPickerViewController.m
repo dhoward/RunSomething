@@ -7,12 +7,13 @@
 //
 
 #import <CoreData/CoreData.h>
+#import <Parse/Parse.h>
 #import "FriendPickerViewController.h"
 #import "Game.h"
+#import "User.h"
 
 @implementation FriendPickerViewController
 
-@synthesize selectedFriendsView = _friendResultText;
 @synthesize friendPickerController = _friendPickerController;
 
 - (void) viewDidLoad {
@@ -47,15 +48,12 @@
     
     Game *game = ((Game*) [_games objectAtIndex:indexPath.row]);
     NSString *otherPlayerName = game.player2.name;
-    //NSString *idString = [id stringValue];
     cell.textLabel.text = otherPlayerName;
     return cell;
 }
 
-
 - (IBAction)pickFriendsButtonClick:(id)sender {
     if (self.friendPickerController == nil) {
-        // Create friend picker, and get data loaded into it.
         self.friendPickerController = [[FBFriendPickerViewController alloc] init];
         self.friendPickerController.title = @"Pick Friends";
         self.friendPickerController.allowsMultipleSelection = false;
@@ -63,21 +61,36 @@
     }
     
     [self.friendPickerController loadData];
-    [self.friendPickerController clearSelection];
-    
-    // iOS 5.0+ apps should use [UIViewController presentViewController:animated:completion:]
-    // rather than this deprecated method, but we want our samples to run on iOS 4.x as well.
-    [self presentModalViewController:self.friendPickerController animated:YES];
+    [self.friendPickerController clearSelection];    
+    [self presentViewController:self.friendPickerController animated:YES completion:nil];
 }
 
 - (void)facebookViewControllerDoneWasPressed:(id)sender {
     
-    // we pick up the users from the selection, and create a string that we use to update the text view
-    // at the bottom of the display; note that self.selection is a property inherited from our base class
-    for (id<FBGraphUser> user in self.friendPickerController.selection) {        
-        //do stuff with the user
+    NSManagedObjectContext *context = [(id)[[UIApplication sharedApplication] delegate] managedObjectContext];
+    NSEntityDescription *userEntity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:context];
+    NSEntityDescription *gameEntity = [NSEntityDescription entityForName:@"Game" inManagedObjectContext:context];
+
+    NSArray *friendsSelected = self.friendPickerController.selection;
+    for (id<FBGraphUser> user in friendsSelected) {
+        User *newUser = (User*) [[NSManagedObject alloc] initWithEntity:userEntity insertIntoManagedObjectContext:context];
+        [newUser init:user.name withFacebookId:user.id];
+        
+        Game *newGame = (Game*) [[NSManagedObject alloc] initWithEntity:gameEntity insertIntoManagedObjectContext:context];
+        [newGame initWithPlayer1:newUser andPlayer2:newUser];
+        
+        PFObject *pfPlayer1 = [PFObject objectWithClassName:@"MyUser"];
+        [pfPlayer1 setObject:newUser.name forKey:@"name"];
+        [pfPlayer1 setObject:newUser.facebookId forKey:@"facebookId"];
+        
+        PFObject *pfGame = [PFObject objectWithClassName:@"Game"];
+        [pfGame setObject:pfPlayer1 forKey:@"player1"];
+        [pfGame setObject:pfPlayer1 forKey:@"player2"];
+        
+        NSArray *objectsToSave = [NSArray arrayWithObjects: pfPlayer1, pfGame, nil];
+        [PFObject saveAllInBackground:objectsToSave];
     }
-    
+
     [self dismissModalViewControllerAnimated:YES];
     [self performSegueWithIdentifier: @"startGameSegue" sender: self];
 }

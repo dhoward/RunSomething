@@ -13,6 +13,8 @@
 @interface User : NSManagedObject
 
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * facebookId;
+@property (nonatomic, retain) NSString * facebookId;
+
+- (void) init: (NSString*)theName withFacebookId: (NSString*)theId;
 
 @end

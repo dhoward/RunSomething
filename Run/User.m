@@ -14,4 +14,9 @@
 @dynamic name;
 @dynamic facebookId;
 
+- (void) init: (NSString*)theName withFacebookId: (NSString*)theId {
+    self.facebookId = theId;
+    self.name = theName;
+}
+
 @end
