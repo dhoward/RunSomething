@@ -8,12 +8,12 @@
 
 #import <CoreData/CoreData.h>
 #import <Parse/Parse.h>
-#import "FriendPickerViewController.h"
+#import "GamesViewController.h"
 #import "Game.h"
 #import "User.h"
 #import "GameTableCell.h"
 
-@implementation FriendPickerViewController
+@implementation GamesViewController
 
 @synthesize friendPickerController = _friendPickerController;
 

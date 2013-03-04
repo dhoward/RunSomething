@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 
-@interface FriendPickerViewController : UIViewController<FBFriendPickerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface GamesViewController : UIViewController<FBFriendPickerDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITextView *selectedFriendsView;
 @property (retain, nonatomic) FBFriendPickerViewController *friendPickerController;
