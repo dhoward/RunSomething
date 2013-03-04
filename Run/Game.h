@@ -13,9 +13,9 @@
 
 @interface Game : NSManagedObject
 
-@property (nonatomic, retain) User *player1;
-@property (nonatomic, retain) User *player2;
-
-- (void) initWithPlayer1: (User*)thePlayer1 andPlayer2: (User*)thePlayer2;
+@property (nonatomic, retain) NSString * gameId;
+@property (nonatomic, retain) NSNumber * points;
+@property (nonatomic, retain) NSString * opponentName;
+@property (nonatomic, retain) NSString * opponentFacebookId;
 
 @end

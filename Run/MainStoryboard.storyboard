@@ -95,6 +95,42 @@
                                     <constraint firstAttribute="width" constant="271" id="ItH-yO-uc5"/>
                                     <constraint firstAttribute="height" constant="369" id="TzW-2C-7dh"/>
                                 </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="GameTableCell" selectionStyle="blue" indentationWidth="10" reuseIdentifier="GameTableCellPrototype" id="KZ2-Ba-Nyv" customClass="GameTableCell">
+                                        <rect key="frame" x="0.0" y="22" width="271" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="271" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" restorationIdentifier="profilePhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Pvd-cM-E2L" customClass="FBProfilePictureView">
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                </view>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="gameLabel" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YbO-Rc-20U">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="151" id="H9F-9D-WV5"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="YbO-Rc-20U" firstAttribute="leading" secondItem="Pvd-cM-E2L" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="5dR-gS-NUg"/>
+                                            <constraint firstItem="Pvd-cM-E2L" firstAttribute="top" secondItem="KZ2-Ba-Nyv" secondAttribute="top" constant="5" id="D9P-a6-uvG"/>
+                                            <constraint firstItem="Pvd-cM-E2L" firstAttribute="centerY" secondItem="YbO-Rc-20U" secondAttribute="centerY" type="default" id="YHO-7C-s3z"/>
+                                            <constraint firstItem="YbO-Rc-20U" firstAttribute="leading" secondItem="KZ2-Ba-Nyv" secondAttribute="leading" constant="39" id="jx0-Dr-N2h"/>
+                                            <constraint firstItem="YbO-Rc-20U" firstAttribute="top" secondItem="KZ2-Ba-Nyv" secondAttribute="top" constant="11" id="t5n-pT-pU8"/>
+                                            <constraint firstItem="Pvd-cM-E2L" firstAttribute="leading" secondItem="KZ2-Ba-Nyv" secondAttribute="leading" type="default" id="uRi-Z2-tw2"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="gameLabel" destination="YbO-Rc-20U" id="hJC-lz-LUk"/>
+                                            <outlet property="profilePhoto" destination="Pvd-cM-E2L" id="rgy-Mt-9Mz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="kYV-Vd-Awd" id="pO7-z2-ft7"/>
                                     <outlet property="delegate" destination="kYV-Vd-Awd" id="fPD-Yg-CH0"/>
@@ -298,6 +334,46 @@
             <point key="canvasLocation" x="772" y="21"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="FBProfilePictureView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FBProfilePictureView.h"/>
+        </class>
+        <class className="FriendPickerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendPickerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="pickFriendsButtonClick:"/>
+                <relationship kind="outlet" name="gamesTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="selectedFriendsView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="GameTableCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GameTableCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="gameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="profilePhoto" candidateClass="FBProfilePictureView"/>
+            </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="FBLogin:"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RunViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RunViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="captureScreen:"/>
+                <relationship kind="action" name="enableDRawing:"/>
+                <relationship kind="action" name="setColor:"/>
+                <relationship kind="action" name="setLineSize:"/>
+                <relationship kind="outlet" name="drawing" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

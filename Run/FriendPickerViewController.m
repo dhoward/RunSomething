@@ -11,32 +11,35 @@
 #import "FriendPickerViewController.h"
 #import "Game.h"
 #import "User.h"
+#import "GameTableCell.h"
 
 @implementation FriendPickerViewController
 
 @synthesize friendPickerController = _friendPickerController;
 
 - (void) viewDidLoad {
-    NSManagedObjectContext *context = [(id)[[UIApplication sharedApplication] delegate] managedObjectContext];
+    _context = [(id)[[UIApplication sharedApplication] delegate] managedObjectContext];
+    _gameEntity = [NSEntityDescription entityForName:@"Game" inManagedObjectContext:_context];
     
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Game"
-                                              inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
+    [self loadGames];
     
-    NSError *error;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    _games = [NSMutableArray arrayWithArray:[context executeFetchRequest:fetchRequest error:&error]];
-    [_gamesTable insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                          withRowAnimation:UITableViewRowAnimationFade];
+    [_gamesTable insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     [_gamesTable setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     [self getGames];
 }
 
+- (void) loadGames {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:_gameEntity];
+    
+    NSError *error;
+    _games = [NSMutableArray arrayWithArray:[_context executeFetchRequest:fetchRequest error:&error]];
+}
+
 - (void) getGames {
     
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]
-                                        initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     spinner.center = CGPointMake(160, 240);
     spinner.hidesWhenStopped = YES;
     [self.view addSubview:spinner];
@@ -47,15 +50,21 @@
     [gamesQuery includeKey:@"player2"];
     [gamesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            [spinner stopAnimating];
-            _games = [NSMutableArray array];
-            int i = 0;
-            for (PFObject *game in objects) {
-                [_games addObject:[self parseGameFromPFObject:game]];
-                i++;
+            
+            for (NSManagedObject * oldGame in _games) {
+                [_context deleteObject:oldGame];
             }
             
-            NSLog(@"GAMES: %i", [_games count]);
+            [spinner stopAnimating];
+            _games = [NSMutableArray array];
+            for (PFObject *game in objects) {
+                Game *newGame = [self parseGameFromPFObject:game];
+                [_games addObject:newGame];
+            }
+            
+            NSError *saveError = nil;
+            [_context save:&saveError];
+            
             [_gamesTable reloadData];
 
         } else {
@@ -66,24 +75,22 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //return 2;
     return [_games count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *simpleTableIdentifier = @"SimpleTableItem";
+    static NSString *simpleTableIdentifier = @"GameTableCellPrototype";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    GameTableCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+        cell = [[GameTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
     Game *game = ((Game*) [_games objectAtIndex:indexPath.row]);
-    NSString *otherPlayerName = game.player2.name;
-    NSLog(@"OTHER PLAYER NAME: %@", otherPlayerName);
-    cell.textLabel.text = otherPlayerName;
+    cell.profilePhoto.profileID = game.opponentFacebookId;
+    cell.gameLabel.text = game.opponentName;
     return cell;
 }
 
@@ -106,19 +113,23 @@
     NSEntityDescription *userEntity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:context];
     NSEntityDescription *gameEntity = [NSEntityDescription entityForName:@"Game" inManagedObjectContext:context];
 
-    NSArray *friendsSelected = self.friendPickerController.selection;
+    NSArray *friendsSelected = self.friendPickerController.selection;    
+    
     for (id<FBGraphUser> user in friendsSelected) {
         User *newUser = (User*) [[NSManagedObject alloc] initWithEntity:userEntity insertIntoManagedObjectContext:context];
         [newUser init:user.name withFacebookId:user.id];
         
         Game *newGame = (Game*) [[NSManagedObject alloc] initWithEntity:gameEntity insertIntoManagedObjectContext:context];
-        [newGame initWithPlayer1:newUser andPlayer2:newUser];
+        newGame.opponentName = user.name;
+        newGame.opponentFacebookId = user.id;
         
         [self savePFObjectsFromGame:newGame];
     }
 
     [self dismissModalViewControllerAnimated:YES];
-    [self performSegueWithIdentifier: @"startGameSegue" sender: self];
+    
+    if(friendsSelected.count > 0)
+        [self performSegueWithIdentifier: @"startGameSegue" sender: self];
 }
 
 - (void)facebookViewControllerCancelWasPressed:(id)sender {
@@ -127,8 +138,8 @@
 
 - (void) savePFObjectsFromGame: (Game*)game {
     PFObject *pfPlayer1 = [PFObject objectWithClassName:@"MyUser"];
-    [pfPlayer1 setObject:game.player1.name forKey:@"name"];
-    [pfPlayer1 setObject:game.player2.facebookId forKey:@"facebookId"];
+    [pfPlayer1 setObject:game.opponentName forKey:@"name"];
+    [pfPlayer1 setObject:game.opponentFacebookId forKey:@"facebookId"];
     
     PFObject *pfGame = [PFObject objectWithClassName:@"Game"];
     [pfGame setObject:pfPlayer1 forKey:@"player1"];
@@ -139,39 +150,11 @@
 }
 
 - (Game*) parseGameFromPFObject: (PFObject*)game {
-    
-    NSManagedObjectContext *context = [(id)[[UIApplication sharedApplication] delegate] managedObjectContext];
-    NSEntityDescription *userEntity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:context];
-    NSEntityDescription *gameEntity = [NSEntityDescription entityForName:@"Game" inManagedObjectContext:context];
-        
-    User *newUser = (User*) [[NSManagedObject alloc] initWithEntity:userEntity insertIntoManagedObjectContext:context];
-    //[newUser init:[[game objectForKey:@"player1"] objectForKey:@"name" ] withFacebookId:[[game objectForKey:@"player1"] objectForKey:@"facebookId" ]];
-    newUser.facebookId = [[game objectForKey:@"player1"] objectForKey:@"facebookId" ];
-    newUser.name = [[game objectForKey:@"player1"] objectForKey:@"name" ];
-    
-    User *newUser2 = (User*) [[NSManagedObject alloc] initWithEntity:userEntity insertIntoManagedObjectContext:context];
-    //[newUser init:[[game objectForKey:@"player2"] objectForKey:@"name" ] withFacebookId:[[game objectForKey:@"player2"] objectForKey:@"facebookId" ]];
-    newUser2.facebookId = [[game objectForKey:@"player2"] objectForKey:@"facebookId" ];
-    newUser2.name = [[game objectForKey:@"player2"] objectForKey:@"name" ];
-    
-    NSError *error;
-    //[context save:&error];
-    
-    NSLog(@"GAME: %@", game);
-    NSLog(@"PLAYER: %@", [game objectForKey:@"player2"]);
-    NSLog(@"NAME: %@", [[game objectForKey:@"player2"] objectForKey:@"name" ]);
-    
-    NSLog(@"USER2: %@", newUser2);
-        
-    Game *newGame = (Game*) [[NSManagedObject alloc] initWithEntity:gameEntity insertIntoManagedObjectContext:context];
-    [newGame initWithPlayer1:newUser andPlayer2:newUser2];
-    
-    NSLog(@"GAME: %@", newGame);
-    NSLog(@"PLAYER: %@", newGame.player2);
-    NSLog(@"NAME: %@", newGame.player2.name);
-    
+    Game *newGame = (Game*)[[NSManagedObject alloc] initWithEntity:_gameEntity insertIntoManagedObjectContext:_context];
+    newGame.gameId = game.objectId;
+    newGame.opponentName = [[game objectForKey:@"player1"] objectForKey:@"name" ];
+    newGame.opponentFacebookId = [[game objectForKey:@"player1"] objectForKey:@"facebookId" ];
     return newGame;
-    
 }
 
 @end

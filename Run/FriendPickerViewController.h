@@ -15,6 +15,8 @@
 @property (retain, nonatomic) FBFriendPickerViewController *friendPickerController;
 @property (weak, nonatomic) IBOutlet UITableView *gamesTable;
 @property NSMutableArray *games;
+@property NSManagedObjectContext *context;
+@property NSEntityDescription *gameEntity;
 
 - (IBAction)pickFriendsButtonClick:(id)sender;
 

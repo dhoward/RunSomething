@@ -47,7 +47,8 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{	
+{
+    [FBProfilePictureView class];
     [application setStatusBarHidden:YES];
     
     UIViewController *navController = self.window.rootViewController;
