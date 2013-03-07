@@ -47,6 +47,7 @@
 		32622B4416E1952C003E7A26 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32622B4316E1952C003E7A26 /* Icon.png */; };
 		32622B4616E19532003E7A26 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32622B4516E19531003E7A26 /* Icon@2x.png */; };
 		32622B4F16E45922003E7A26 /* GameTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622B4E16E45922003E7A26 /* GameTableCell.m */; };
+		32622B5216E7E4D9003E7A26 /* RunAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 32622B5116E7E4D8003E7A26 /* RunAppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,8 @@
 		32622B4516E19531003E7A26 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		32622B4D16E45921003E7A26 /* GameTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameTableCell.h; sourceTree = "<group>"; };
 		32622B4E16E45922003E7A26 /* GameTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameTableCell.m; sourceTree = "<group>"; };
+		32622B5016E7E4D8003E7A26 /* RunAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunAppDelegate.h; sourceTree = "<group>"; };
+		32622B5116E7E4D8003E7A26 /* RunAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunAppDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +229,8 @@
 				32622B2916DD7794003E7A26 /* User.m */,
 				32622B4D16E45921003E7A26 /* GameTableCell.h */,
 				32622B4E16E45922003E7A26 /* GameTableCell.m */,
+				32622B5016E7E4D8003E7A26 /* RunAppDelegate.h */,
+				32622B5116E7E4D8003E7A26 /* RunAppDelegate.m */,
 			);
 			path = Run;
 			sourceTree = "<group>";
@@ -384,6 +389,7 @@
 				32622B2716DD775F003E7A26 /* Game.m in Sources */,
 				32622B2A16DD7794003E7A26 /* User.m in Sources */,
 				32622B4F16E45922003E7A26 /* GameTableCell.m in Sources */,
+				32622B5216E7E4D9003E7A26 /* RunAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

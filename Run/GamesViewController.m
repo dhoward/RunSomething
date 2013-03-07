@@ -18,6 +18,12 @@
 @synthesize friendPickerController = _friendPickerController;
 
 - (void) viewDidLoad {
+    
+    RunAppDelegate *appDelegate = (RunAppDelegate *)[[UIApplication sharedApplication] delegate];
+    _currentUser = appDelegate.currentUser;
+    
+    NSLog(@"USER: %@", _currentUser.name);
+    
     _context = [(id)[[UIApplication sharedApplication] delegate] managedObjectContext];
     _gameEntity = [NSEntityDescription entityForName:@"Game" inManagedObjectContext:_context];
     
@@ -45,7 +51,16 @@
     [self.view addSubview:spinner];
     [spinner startAnimating];
     
-    PFQuery *gamesQuery = [PFQuery queryWithClassName:@"Game"];
+    PFQuery *idQuery = [PFQuery queryWithClassName:@"MyUser"];
+    [idQuery whereKey:@"facebookId" equalTo:_currentUser.facebookId];
+    
+    PFQuery *p1Query = [PFQuery queryWithClassName:@"Game"];
+    [p1Query whereKey:@"player1" matchesQuery:idQuery];
+    
+    PFQuery *p2Query = [PFQuery queryWithClassName:@"Game"];
+    [p2Query whereKey:@"player2" matchesQuery:idQuery];
+    
+    PFQuery *gamesQuery = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:p1Query, p2Query, nil]];
     [gamesQuery includeKey:@"player1"];
     [gamesQuery includeKey:@"player2"];
     [gamesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -152,8 +167,18 @@
 - (Game*) parseGameFromPFObject: (PFObject*)game {
     Game *newGame = (Game*)[[NSManagedObject alloc] initWithEntity:_gameEntity insertIntoManagedObjectContext:_context];
     newGame.gameId = game.objectId;
-    newGame.opponentName = [[game objectForKey:@"player1"] objectForKey:@"name" ];
-    newGame.opponentFacebookId = [[game objectForKey:@"player1"] objectForKey:@"facebookId" ];
+    
+    NSString *playerKey = @"player1";
+    
+    NSLog(@"%@", _currentUser.facebookId);
+    NSLog(@"%@", [[game objectForKey:@"player1"] objectForKey:@"facebookId"]);
+    NSLog(@"%d", [[[game objectForKey:@"player1"] objectForKey:@"facebookId"] isEqualToString: _currentUser.facebookId]);
+    
+    if([[[game objectForKey:@"player1"] objectForKey:@"facebookId"] isEqualToString: _currentUser.facebookId])
+        playerKey = @"player2";
+    
+    newGame.opponentName = [[game objectForKey:playerKey] objectForKey:@"name" ];
+    newGame.opponentFacebookId = [[game objectForKey:playerKey] objectForKey:@"facebookId" ];
     return newGame;
 }
 

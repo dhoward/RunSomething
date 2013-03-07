@@ -16,5 +16,6 @@
 @property (nonatomic, retain) NSString * facebookId;
 
 - (void) init: (NSString*)theName withFacebookId: (NSString*)theId;
++ (User*) getCurrentUser;
 
 @end

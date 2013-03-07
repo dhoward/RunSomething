@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "RunAppDelegate.h"
+#import "User.h"
 
 @interface GamesViewController : UIViewController<FBFriendPickerDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITextView *selectedFriendsView;
 @property (retain, nonatomic) FBFriendPickerViewController *friendPickerController;
 @property (weak, nonatomic) IBOutlet UITableView *gamesTable;
+@property (strong, nonatomic) User *currentUser;
 @property NSMutableArray *games;
 @property NSManagedObjectContext *context;
 @property NSEntityDescription *gameEntity;
