@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import <MapKit/MapKit.h>
+#import "Game.h"
 
 @interface RunViewController : UIViewController <MKMapViewDelegate> {
     CGPoint lastPoint;
@@ -22,5 +23,6 @@
     bool isDrawing;
     bool mapInitted;
 }
+@property (strong, nonatomic) Game *game;
 -(void)drawUserPoint;
 @end

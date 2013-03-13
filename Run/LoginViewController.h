@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController{
+    NSMutableData *urlData;
+}
 -(IBAction)FBLogin:(id)sender;
 - (void)sessionStateChanged:(FBSession *)session state:(FBSessionState)state error:(NSError *)error;
 @end

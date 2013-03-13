@@ -10,6 +10,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "RunAppDelegate.h"
 #import "User.h"
+#import "Game.h"
 
 @interface GamesViewController : UIViewController<FBFriendPickerDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -20,6 +21,7 @@
 @property NSMutableArray *games;
 @property NSManagedObjectContext *context;
 @property NSEntityDescription *gameEntity;
+@property Game *chosenGame;
 
 - (IBAction)pickFriendsButtonClick:(id)sender;
 

@@ -9,6 +9,8 @@
 #import <CoreData/CoreData.h>
 #import <Parse/Parse.h>
 #import "GamesViewController.h"
+#import "RunViewController.h"
+#import "AnswerViewController.h"
 #import "Game.h"
 #import "User.h"
 #import "GameTableCell.h"
@@ -21,8 +23,6 @@
     
     RunAppDelegate *appDelegate = (RunAppDelegate *)[[UIApplication sharedApplication] delegate];
     _currentUser = appDelegate.currentUser;
-    
-    NSLog(@"USER: %@", _currentUser.name);
     
     _context = [(id)[[UIApplication sharedApplication] delegate] managedObjectContext];
     _gameEntity = [NSEntityDescription entityForName:@"Game" inManagedObjectContext:_context];
@@ -38,11 +38,11 @@
 - (void) loadGames {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:_gameEntity];
-    
     NSError *error;
     _games = [NSMutableArray arrayWithArray:[_context executeFetchRequest:fetchRequest error:&error]];
 }
 
+//TODO: Refactor this method once backend supports call the correct way
 - (void) getGames {
     
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -109,6 +109,13 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    _chosenGame = (Game*)[_games objectAtIndex:indexPath.row];
+    
+    [self performSegueWithIdentifier:@"guessSegue" sender: self];
+}
+
 - (IBAction)pickFriendsButtonClick:(id)sender {
     if (self.friendPickerController == nil) {
         self.friendPickerController = [[FBFriendPickerViewController alloc] init];
@@ -169,17 +176,29 @@
     newGame.gameId = game.objectId;
     
     NSString *playerKey = @"player1";
-    
-    NSLog(@"%@", _currentUser.facebookId);
-    NSLog(@"%@", [[game objectForKey:@"player1"] objectForKey:@"facebookId"]);
-    NSLog(@"%d", [[[game objectForKey:@"player1"] objectForKey:@"facebookId"] isEqualToString: _currentUser.facebookId]);
-    
-    if([[[game objectForKey:@"player1"] objectForKey:@"facebookId"] isEqualToString: _currentUser.facebookId])
+    NSLog(@"%@", _currentUser);
+    //TODO: Need to get use rid another way in case there are no games
+    if([[[game objectForKey:@"player1"] objectForKey:@"facebookId"] isEqualToString: _currentUser.facebookId]) {
         playerKey = @"player2";
+        _currentUser.userId = ((PFObject*)[game objectForKey:@"player1"]).objectId;
+    } else {
+        _currentUser.userId = ((PFObject*)[game objectForKey:@"player2"]).objectId;
+    }
     
     newGame.opponentName = [[game objectForKey:playerKey] objectForKey:@"name" ];
     newGame.opponentFacebookId = [[game objectForKey:playerKey] objectForKey:@"facebookId" ];
     return newGame;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"guessSegue"]) {
+        AnswerViewController *vc = [segue destinationViewController];
+        vc.game = _chosenGame;
+    } else if([segue.identifier isEqualToString:@"startGameSegue"]) {
+        RunViewController *vc = [segue destinationViewController];
+        vc.game = _chosenGame;
+    }
 }
 
 @end

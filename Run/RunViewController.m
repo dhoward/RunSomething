@@ -6,7 +6,9 @@
 //  Copyright (c) 2013 RDG. All rights reserved.
 //
 
+#import <Parse/Parse.h>
 #import "RunViewController.h"
+#import "RunAppDelegate.h"
 
 @interface RunViewController ()
 
@@ -21,6 +23,8 @@
     isDrawing = false;
     mapView.delegate = self;
     mapInitted = false;
+    
+    NSLog(@"RUNVC: %@", _game);
 }
 
 - (IBAction)setLineSize:(id)sender {
@@ -101,7 +105,47 @@
     [drawing.layer renderInContext:context];
     UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil);
+    //UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil);
+    
+    NSData *imageData = UIImageJPEGRepresentation(screenshot, 0.05f);
+    [self uploadMove:imageData forGame:_game];
+}
+
+- (void) uploadMove: (NSData*) imageData forGame: game {
+    PFFile *image = [PFFile fileWithName:@"Image.jpg" data:imageData];
+    
+    [image saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            RunAppDelegate *appDelegate = (RunAppDelegate *)[[UIApplication sharedApplication] delegate];
+            User *currentUser = appDelegate.currentUser;
+            
+            NSLog(@"CURRENT USER ID: %@", currentUser.userId);
+            
+            PFObject *move = [PFObject objectWithClassName:@"Move"];
+            [move setObject:image forKey:@"image"];
+            [move setObject:[PFObject objectWithoutDataWithClassName:@"Game" objectId:_game.gameId] forKey:@"game"];
+            [move setObject:[PFObject objectWithoutDataWithClassName:@"MyUser" objectId:currentUser.userId] forKey:@"user"];
+            
+            [move saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (!error) {
+                    [self performSegueWithIdentifier: @"returnToGamesSegue" sender: self];
+                }
+                else{
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                }
+            }];
+            
+            PFObject *pfGame = [PFQuery getObjectOfClass:@"Game" objectId:_game.gameId];
+            [pfGame setValue:move forKey:@"lastMove"];
+            [pfGame saveInBackground];
+        }
+        else{            
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    } progressBlock:^(int percentDone) {
+        // Update your progress spinner here. percentDone will be between 0 and 100.
+        //HUD.progress = (float)percentDone/100;
+    }];
 }
 
 
