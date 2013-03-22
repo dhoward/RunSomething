@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <MapKit/MapKit.h>
 #import "Game.h"
+#import "Prompt.h"
 
 @interface RunViewController : UIViewController <MKMapViewDelegate> {
     CGPoint lastPoint;
@@ -24,5 +25,6 @@
     bool mapInitted;
 }
 @property (strong, nonatomic) Game *game;
+@property (strong, nonatomic) Prompt *prompt;
 -(void)drawUserPoint;
 @end

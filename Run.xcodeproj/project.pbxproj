@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3245B2FB16FCEA7500C7058C /* ChoosePromptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3245B2FA16FCEA7500C7058C /* ChoosePromptViewController.m */; };
+		3245B2FE16FCECB600C7058C /* Prompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 3245B2FD16FCECB600C7058C /* Prompt.m */; };
 		32622ABE16D9A034003E7A26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622ABD16D9A034003E7A26 /* UIKit.framework */; };
 		32622AC016D9A034003E7A26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622ABF16D9A034003E7A26 /* Foundation.framework */; };
 		32622AC216D9A034003E7A26 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622AC116D9A034003E7A26 /* CoreGraphics.framework */; };
@@ -73,6 +75,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3245B2F916FCEA7500C7058C /* ChoosePromptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoosePromptViewController.h; sourceTree = "<group>"; };
+		3245B2FA16FCEA7500C7058C /* ChoosePromptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoosePromptViewController.m; sourceTree = "<group>"; };
+		3245B2FC16FCECB600C7058C /* Prompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prompt.h; sourceTree = "<group>"; };
+		3245B2FD16FCECB600C7058C /* Prompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prompt.m; sourceTree = "<group>"; };
 		32622ABA16D9A034003E7A26 /* Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Run.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32622ABD16D9A034003E7A26 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		32622ABF16D9A034003E7A26 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -275,6 +281,10 @@
 				32622B5716E823CD003E7A26 /* AnswerViewController.m */,
 				32622B5916EA9F9F003E7A26 /* NSString+URLEncoding.h */,
 				32622B5A16EA9FA0003E7A26 /* NSString+URLEncoding.m */,
+				3245B2F916FCEA7500C7058C /* ChoosePromptViewController.h */,
+				3245B2FA16FCEA7500C7058C /* ChoosePromptViewController.m */,
+				3245B2FC16FCECB600C7058C /* Prompt.h */,
+				3245B2FD16FCECB600C7058C /* Prompt.m */,
 			);
 			path = Run;
 			sourceTree = "<group>";
@@ -472,6 +482,8 @@
 				32622B9316F14124003E7A26 /* AFURLConnectionOperation.m in Sources */,
 				32622B9416F14124003E7A26 /* AFXMLRequestOperation.m in Sources */,
 				32622B9516F14124003E7A26 /* UIImageView+AFNetworking.m in Sources */,
+				3245B2FB16FCEA7500C7058C /* ChoosePromptViewController.m in Sources */,
+				3245B2FE16FCECB600C7058C /* Prompt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,6 +674,7 @@
 				32622AF416D9A035003E7A26 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		32622AF516D9A035003E7A26 /* Build configuration list for PBXNativeTarget "RunTests" */ = {
 			isa = XCConfigurationList;
@@ -670,6 +683,7 @@
 				32622AF716D9A035003E7A26 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

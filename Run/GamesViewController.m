@@ -138,7 +138,7 @@
 }
 
 - (void) createGame: (NSString*)opponentId {
-    NSLog(@"Ceate game");
+    NSLog(@"Create game");
     NSString *queryString = [NSString stringWithFormat:@"player1=%@&player2=%@", _currentUser.facebookId, opponentId];
     NSString *requestString = [NSString stringWithFormat:@"http://localhost:3000/createGame?%@", queryString];
     
