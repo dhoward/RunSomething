@@ -15,7 +15,7 @@
 @dynamic name;
 @dynamic facebookId;
 
-- (void) init: (NSString*)theName withUserId: (NSString*)userId andFacebookId: (NSString*)facebookId {
+- (void) init: (NSString*)theName withUserId: (NSString*)userId andFacebookId: (NSNumber*)facebookId {
     self.userId = userId;
     self.facebookId = facebookId;
     self.name = theName;
@@ -57,7 +57,6 @@
     NSLog(@"SAVING USER: %@", username);
     NSError *error2;
     [context save:&error2];
-    
     
     return newUser;
 }

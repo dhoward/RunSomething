@@ -23,8 +23,6 @@
     isDrawing = false;
     mapView.delegate = self;
     mapInitted = false;
-    
-    NSLog(@"RUNVC: %@", _game);
 }
 
 - (IBAction)setLineSize:(id)sender {
@@ -105,7 +103,6 @@
     [drawing.layer renderInContext:context];
     UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    //UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil);
     
     NSData *imageData = UIImageJPEGRepresentation(screenshot, 0.05f);
     [self uploadMove:imageData forGame:_game];

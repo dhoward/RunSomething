@@ -8,6 +8,7 @@
 
 #import <CoreData/CoreData.h>
 #import <Parse/Parse.h>
+#import "AFJSONRequestOperation.h"
 #import "GamesViewController.h"
 #import "RunViewController.h"
 #import "AnswerViewController.h"
@@ -51,41 +52,34 @@
     [self.view addSubview:spinner];
     [spinner startAnimating];
     
-    PFQuery *idQuery = [PFQuery queryWithClassName:@"MyUser"];
-    [idQuery whereKey:@"facebookId" equalTo:_currentUser.facebookId];
+    NSString *queryString = [NSString stringWithFormat:@"user=%@", _currentUser.userId];
+    NSString *requestString = [NSString stringWithFormat:@"http://localhost:3000/games?%@", queryString];
     
-    PFQuery *p1Query = [PFQuery queryWithClassName:@"Game"];
-    [p1Query whereKey:@"player1" matchesQuery:idQuery];
+    NSURLRequest *theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestString]
+                                                         cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                         timeoutInterval:60.0];
     
-    PFQuery *p2Query = [PFQuery queryWithClassName:@"Game"];
-    [p2Query whereKey:@"player2" matchesQuery:idQuery];
-    
-    PFQuery *gamesQuery = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:p1Query, p2Query, nil]];
-    [gamesQuery includeKey:@"player1"];
-    [gamesQuery includeKey:@"player2"];
-    [gamesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            
-            for (NSManagedObject * oldGame in _games) {
-                [_context deleteObject:oldGame];
-            }
-            
-            [spinner stopAnimating];
-            _games = [NSMutableArray array];
-            for (PFObject *game in objects) {
-                Game *newGame = [self parseGameFromPFObject:game];
-                [_games addObject:newGame];
-            }
-            
-            NSError *saveError = nil;
-            [_context save:&saveError];
-            
-            [_gamesTable reloadData];
-
-        } else {
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:theRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        
+        NSDictionary *gamesArray = (NSDictionary *) JSON;
+        
+        for (NSManagedObject * oldGame in _games) {
+            [_context deleteObject:oldGame];
         }
-    }];    
+        
+        [spinner stopAnimating];
+        _games = [NSMutableArray array];
+        for (NSDictionary *game in gamesArray) {
+            Game *newGame = [self parseGameFromJson:game];
+            [_games addObject:newGame];
+        }
+        
+        NSError *saveError = nil;
+        [_context save:&saveError];        
+        [_gamesTable reloadData];
+        
+    } failure:nil];
+    [operation start];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -104,7 +98,7 @@
     }
     
     Game *game = ((Game*) [_games objectAtIndex:indexPath.row]);
-    cell.profilePhoto.profileID = game.opponentFacebookId;
+    cell.profilePhoto.profileID = [game.opponentFacebookId stringValue];
     cell.gameLabel.text = game.opponentName;
     return cell;
 }
@@ -112,7 +106,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     _chosenGame = (Game*)[_games objectAtIndex:indexPath.row];
-    
     [self performSegueWithIdentifier:@"guessSegue" sender: self];
 }
 
@@ -130,63 +123,48 @@
 }
 
 - (void)facebookViewControllerDoneWasPressed:(id)sender {
-    
-    NSManagedObjectContext *context = [(id)[[UIApplication sharedApplication] delegate] managedObjectContext];
-    NSEntityDescription *userEntity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:context];
-    NSEntityDescription *gameEntity = [NSEntityDescription entityForName:@"Game" inManagedObjectContext:context];
 
-    NSArray *friendsSelected = self.friendPickerController.selection;    
-    
+    NSArray *friendsSelected = self.friendPickerController.selection;
     for (id<FBGraphUser> user in friendsSelected) {
-        User *newUser = (User*) [[NSManagedObject alloc] initWithEntity:userEntity insertIntoManagedObjectContext:context];
-        [newUser init:user.name withFacebookId:user.id];
-        
-        Game *newGame = (Game*) [[NSManagedObject alloc] initWithEntity:gameEntity insertIntoManagedObjectContext:context];
-        newGame.opponentName = user.name;
-        newGame.opponentFacebookId = user.id;
-        
-        [self savePFObjectsFromGame:newGame];
+        NSLog(@"%@", user.id);
+        [self createGame:user.id];
     }
 
     [self dismissModalViewControllerAnimated:YES];
-    
-    if(friendsSelected.count > 0)
-        [self performSegueWithIdentifier: @"startGameSegue" sender: self];
 }
 
 - (void)facebookViewControllerCancelWasPressed:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (void) savePFObjectsFromGame: (Game*)game {
-    PFObject *pfPlayer1 = [PFObject objectWithClassName:@"MyUser"];
-    [pfPlayer1 setObject:game.opponentName forKey:@"name"];
-    [pfPlayer1 setObject:game.opponentFacebookId forKey:@"facebookId"];
+- (void) createGame: (NSString*)opponentId {
+    NSLog(@"Ceate game");
+    NSString *queryString = [NSString stringWithFormat:@"player1=%@&player2=%@", _currentUser.facebookId, opponentId];
+    NSString *requestString = [NSString stringWithFormat:@"http://localhost:3000/createGame?%@", queryString];
     
-    PFObject *pfGame = [PFObject objectWithClassName:@"Game"];
-    [pfGame setObject:pfPlayer1 forKey:@"player1"];
-    [pfGame setObject:pfPlayer1 forKey:@"player2"];
+    NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestString]
+                                                  cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                  timeoutInterval:60.0];
+    [theRequest setHTTPMethod: @"POST"];
     
-    NSArray *objectsToSave = [NSArray arrayWithObjects: pfPlayer1, pfGame, nil];
-    [PFObject saveAllInBackground:objectsToSave];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:theRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        //NSLog(<#NSString *format, ...#>)
+        [self performSegueWithIdentifier: @"startGameSegue" sender: self];
+    } failure:nil];
+    [operation start];
 }
 
-- (Game*) parseGameFromPFObject: (PFObject*)game {
+- (Game*) parseGameFromJson: (NSDictionary*)json {
     Game *newGame = (Game*)[[NSManagedObject alloc] initWithEntity:_gameEntity insertIntoManagedObjectContext:_context];
-    newGame.gameId = game.objectId;
+    newGame.gameId = [json objectForKey:@"_id"];
     
     NSString *playerKey = @"player1";
-    NSLog(@"%@", _currentUser);
-    //TODO: Need to get use rid another way in case there are no games
-    if([[[game objectForKey:@"player1"] objectForKey:@"facebookId"] isEqualToString: _currentUser.facebookId]) {
-        playerKey = @"player2";
-        _currentUser.userId = ((PFObject*)[game objectForKey:@"player1"]).objectId;
-    } else {
-        _currentUser.userId = ((PFObject*)[game objectForKey:@"player2"]).objectId;
+    if([[[json objectForKey:@"player1"] objectForKey:@"_id"] isEqualToString: _currentUser.userId]) {
+        playerKey = @"player2";     
     }
     
-    newGame.opponentName = [[game objectForKey:playerKey] objectForKey:@"name" ];
-    newGame.opponentFacebookId = [[game objectForKey:playerKey] objectForKey:@"facebookId" ];
+    newGame.opponentName = [[json objectForKey:playerKey] objectForKey:@"name" ];
+    newGame.opponentFacebookId = [[json objectForKey:playerKey] objectForKey:@"facebookId" ];
     return newGame;
 }
 

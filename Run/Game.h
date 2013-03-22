@@ -16,6 +16,6 @@
 @property (nonatomic, retain) NSString * gameId;
 @property (nonatomic, retain) NSNumber * points;
 @property (nonatomic, retain) NSString * opponentName;
-@property (nonatomic, retain) NSString * opponentFacebookId;
+@property (nonatomic, retain) NSNumber * opponentFacebookId;
 
 @end

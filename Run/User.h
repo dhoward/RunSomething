@@ -14,9 +14,9 @@
 
 @property (nonatomic, retain) NSString * userId;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * facebookId;
+@property (nonatomic, retain) NSNumber * facebookId;
 
-- (void) init: (NSString*)theName withFacebookId: (NSString*)theId;
+- (void) init: (NSString*)theName withUserId: (NSString*)userId andFacebookId: (NSNumber*)facebookId;
 + (User*) getCurrentUser;
 + (User*) saveUser: userId withName: username andFacebookId: facebookId;
 
