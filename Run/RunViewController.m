@@ -23,6 +23,10 @@
     isDrawing = false;
     mapView.delegate = self;
     mapInitted = false;
+    
+    promptLabel.text = _prompt.word;
+    
+    NSLog(@"prompt chosen: %@", _prompt);
 }
 
 - (IBAction)setLineSize:(id)sender {

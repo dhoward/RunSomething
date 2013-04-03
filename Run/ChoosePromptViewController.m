@@ -68,12 +68,15 @@
 
 - (void)beginGameWithPrompt: (Prompt*)prompt
 {
+    _chosenPrompt = prompt;
     [self performSegueWithIdentifier:@"startGameWithPromptSegue" sender:self];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"startGameithPromptSegue"]) {
+    NSLog(@"Preparing for segue");
+    if([segue.identifier isEqualToString:@"startGameWithPromptSegue"]) {
+        NSLog(@"Found one");
         RunViewController *vc = [segue destinationViewController];
         vc.game = _game;
         vc.prompt = _chosenPrompt;

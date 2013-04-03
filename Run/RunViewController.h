@@ -17,6 +17,7 @@
     __weak IBOutlet UIImageView *drawing;
     __weak IBOutlet MKMapView *mapView;
     UIImageView *drawImage;
+    __weak IBOutlet UILabel *promptLabel;
     BOOL mouseSwiped;
     int mouseMoved;
     float lineSize;
