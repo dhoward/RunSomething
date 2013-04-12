@@ -148,7 +148,8 @@
     [theRequest setHTTPMethod: @"POST"];
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:theRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        //NSLog(<#NSString *format, ...#>)
+        NSDictionary *game = (NSDictionary *) JSON;
+        _chosenGame = [self parseGameFromJson: game];
         [self performSegueWithIdentifier: @"startGameSegue" sender: self];
     } failure:nil];
     [operation start];

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3242B7831714E853004067FF /* LetterHolderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3242B7821714E853004067FF /* LetterHolderView.m */; };
+		3242B78617176FE5004067FF /* LetterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3242B78517176FE5004067FF /* LetterView.m */; };
 		3245B2FB16FCEA7500C7058C /* ChoosePromptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3245B2FA16FCEA7500C7058C /* ChoosePromptViewController.m */; };
 		3245B2FE16FCECB600C7058C /* Prompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 3245B2FD16FCECB600C7058C /* Prompt.m */; };
 		32622ABE16D9A034003E7A26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32622ABD16D9A034003E7A26 /* UIKit.framework */; };
@@ -75,6 +77,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3242B7811714E853004067FF /* LetterHolderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LetterHolderView.h; sourceTree = "<group>"; };
+		3242B7821714E853004067FF /* LetterHolderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LetterHolderView.m; sourceTree = "<group>"; };
+		3242B78417176FE5004067FF /* LetterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LetterView.h; sourceTree = "<group>"; };
+		3242B78517176FE5004067FF /* LetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LetterView.m; sourceTree = "<group>"; };
 		3245B2F916FCEA7500C7058C /* ChoosePromptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoosePromptViewController.h; sourceTree = "<group>"; };
 		3245B2FA16FCEA7500C7058C /* ChoosePromptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoosePromptViewController.m; sourceTree = "<group>"; };
 		3245B2FC16FCECB600C7058C /* Prompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prompt.h; sourceTree = "<group>"; };
@@ -285,6 +291,10 @@
 				3245B2FA16FCEA7500C7058C /* ChoosePromptViewController.m */,
 				3245B2FC16FCECB600C7058C /* Prompt.h */,
 				3245B2FD16FCECB600C7058C /* Prompt.m */,
+				3242B7811714E853004067FF /* LetterHolderView.h */,
+				3242B7821714E853004067FF /* LetterHolderView.m */,
+				3242B78417176FE5004067FF /* LetterView.h */,
+				3242B78517176FE5004067FF /* LetterView.m */,
 			);
 			path = Run;
 			sourceTree = "<group>";
@@ -484,6 +494,8 @@
 				32622B9516F14124003E7A26 /* UIImageView+AFNetworking.m in Sources */,
 				3245B2FB16FCEA7500C7058C /* ChoosePromptViewController.m in Sources */,
 				3245B2FE16FCECB600C7058C /* Prompt.m in Sources */,
+				3242B7831714E853004067FF /* LetterHolderView.m in Sources */,
+				3242B78617176FE5004067FF /* LetterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

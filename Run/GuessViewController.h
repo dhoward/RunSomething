@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "Game.h"
+#import "LetterView.h"
 
 @interface GuessViewController : UIViewController
 
 @property (strong, nonatomic) Game *game;
+@property bool inDrag;
+@property UIView *draggedView;
+@property UIView *objectToDrag;
+@property NSMutableArray* letterHolders;
+
+@property (nonatomic, strong) LetterView *dragObject;
+@property (nonatomic, assign) CGPoint touchOffset;
 
 @end

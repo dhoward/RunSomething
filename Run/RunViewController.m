@@ -9,6 +9,8 @@
 #import <Parse/Parse.h>
 #import "RunViewController.h"
 #import "RunAppDelegate.h"
+#import "AFJSONRequestOperation.h"
+#import "AFHTTPRequestOperation.h"
 
 @interface RunViewController ()
 
@@ -121,26 +123,32 @@
             User *currentUser = appDelegate.currentUser;
             
             NSLog(@"CURRENT USER ID: %@", currentUser.userId);
+            NSLog(@"IMAGE URL: %@", image.url);
             
-            PFObject *move = [PFObject objectWithClassName:@"Move"];
-            [move setObject:image forKey:@"image"];
-            [move setObject:[PFObject objectWithoutDataWithClassName:@"Game" objectId:_game.gameId] forKey:@"game"];
-            [move setObject:[PFObject objectWithoutDataWithClassName:@"MyUser" objectId:currentUser.userId] forKey:@"user"];
+            NSString *queryString = [NSString stringWithFormat:@"user=%@&game=%@&prompt=%@&image=%@", currentUser.userId, _game.gameId, _prompt.promptId, image.url];
+            NSString *requestString = [NSString stringWithFormat:@"http://localhost:3000/makeMove?%@", queryString];
+                    
+            NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestString]
+                                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                                        timeoutInterval:60.0];
+            [theRequest setHTTPMethod: @"POST"];
             
-            [move saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (!error) {
-                    [self performSegueWithIdentifier: @"returnToGamesSegue" sender: self];
-                }
-                else{
-                    NSLog(@"Error: %@ %@", error, [error userInfo]);
-                }
+            AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest: theRequest];
+            
+            [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Your move has been sent."
+                                                                message:@"For realz."
+                                                               delegate:self
+                                                      cancelButtonTitle:@"Sweet"
+                                                      otherButtonTitles:nil];
+                [alert show];
+                NSLog(@"Success");
+            } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"Failure"); 
             }];
             
-            PFObject *pfGame = [PFQuery getObjectOfClass:@"Game" objectId:_game.gameId];
-            [pfGame setValue:move forKey:@"lastMove"];
-            [pfGame saveInBackground];
-        }
-        else{            
+            [operation start];
+        } else{            
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     } progressBlock:^(int percentDone) {
@@ -149,6 +157,10 @@
     }];
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"CLICKED ALERT");
+    [self performSegueWithIdentifier: @"returnToGamesSegue" sender: self];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

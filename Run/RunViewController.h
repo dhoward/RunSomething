@@ -12,7 +12,7 @@
 #import "Game.h"
 #import "Prompt.h"
 
-@interface RunViewController : UIViewController <MKMapViewDelegate> {
+@interface RunViewController : UIViewController <MKMapViewDelegate, UIAlertViewDelegate> {
     CGPoint lastPoint;
     __weak IBOutlet UIImageView *drawing;
     __weak IBOutlet MKMapView *mapView;
