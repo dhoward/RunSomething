@@ -40,7 +40,22 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:_gameEntity];
     NSError *error;
-    _games = [NSMutableArray arrayWithArray:[_context executeFetchRequest:fetchRequest error:&error]];
+    NSMutableArray* gamesArray  = [NSMutableArray arrayWithArray:[_context executeFetchRequest:fetchRequest error:&error]];
+    
+    NSMutableArray* yourMove = [NSMutableArray array];
+    NSMutableArray* notYourMove = [NSMutableArray array];
+    for (Game *game in gamesArray) {
+        if(game.yourMove)
+            [yourMove addObject:game];
+        else
+            [notYourMove addObject:game];
+    }
+    
+    NSDictionary *yourMoveDict = [NSDictionary dictionaryWithObject:yourMove forKey:@"games"];
+    NSDictionary *notYourMoveDict = [NSDictionary dictionaryWithObject:notYourMove forKey:@"games"];
+    
+    [_games addObject:yourMoveDict];
+    [_games addObject:notYourMoveDict];
 }
 
 //TODO: Refactor this method once backend supports call the correct way
@@ -69,10 +84,22 @@
         
         [spinner stopAnimating];
         _games = [NSMutableArray array];
+        NSMutableArray* yourMove = [NSMutableArray array];
+        NSMutableArray* notYourMove = [NSMutableArray array];
+        
         for (NSDictionary *game in gamesArray) {
             Game *newGame = [self parseGameFromJson:game];
-            [_games addObject:newGame];
+            if(newGame.yourMove)
+                [yourMove addObject:newGame];
+            else
+                [notYourMove addObject:newGame];
         }
+        
+        NSDictionary *yourMoveDict = [NSDictionary dictionaryWithObject:yourMove forKey:@"games"];
+        NSDictionary *notYourMoveDict = [NSDictionary dictionaryWithObject:notYourMove forKey:@"games"];
+        
+        [_games addObject:yourMoveDict];
+        [_games addObject:notYourMoveDict];
         
         NSError *saveError = nil;
         [_context save:&saveError];        
@@ -82,9 +109,24 @@
     [operation start];
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return [_games count];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_games count];
+    NSDictionary *dictionary = [_games objectAtIndex:section];
+    NSArray *array = [dictionary objectForKey:@"games"];
+    return [array count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    if(section == 0)
+        return @"Yo move";
+    else
+        return @"Nacho move";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -97,7 +139,9 @@
         cell = [[GameTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    Game *game = ((Game*) [_games objectAtIndex:indexPath.row]);
+    NSDictionary *dictionary = [_games objectAtIndex:indexPath.section];
+    NSArray *array = [dictionary objectForKey:@"games"];
+    Game* game = [array objectAtIndex:indexPath.row];
     cell.profilePhoto.profileID = [game.opponentFacebookId stringValue];
     cell.gameLabel.text = game.opponentName;
     return cell;
@@ -105,7 +149,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    _chosenGame = (Game*)[_games objectAtIndex:indexPath.row];
+    NSDictionary *dictionary = [_games objectAtIndex:indexPath.section];
+    NSArray *array = [dictionary objectForKey:@"games"];
+    _chosenGame = [array objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"guessSegue" sender: self];
 }
 
@@ -166,6 +212,8 @@
     
     newGame.opponentName = [[json objectForKey:playerKey] objectForKey:@"name" ];
     newGame.opponentFacebookId = [[json objectForKey:playerKey] objectForKey:@"facebookId" ];
+    newGame.yourMove = ![[[json objectForKey:@"lastMove"] objectForKey:@"player"] isEqualToString:_currentUser.userId];
+    NSLog(@"Your move: %d", newGame.yourMove);
     return newGame;
 }
 

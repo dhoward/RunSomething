@@ -17,5 +17,6 @@
 @property (nonatomic, retain) NSNumber * points;
 @property (nonatomic, retain) NSString * opponentName;
 @property (nonatomic, retain) NSNumber * opponentFacebookId;
+@property (nonatomic) BOOL yourMove;
 
 @end

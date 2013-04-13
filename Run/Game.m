@@ -15,5 +15,6 @@
 @dynamic points;
 @dynamic opponentName;
 @dynamic opponentFacebookId;
+@dynamic yourMove;
 
 @end
