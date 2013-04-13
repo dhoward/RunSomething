@@ -12,6 +12,7 @@
 @implementation LetterHolderView
 
 @synthesize taken;
+@synthesize letter;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -22,19 +23,19 @@
     return self;
 }
 
-- (bool)placeLetter: (LetterView*) letter
+- (bool)placeLetter: (LetterView*) letterView
 {
     if(taken)
         return false;
     
-    letter.center = self.center;
-    letter.holder = self;
+    letter = letterView.letter;
     taken = true;
     return true;
 }
 
 - (void)setVacant
 {
+    letter = @"";
     taken = false;
     NSLog(@"Set vacant");
 }

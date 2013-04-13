@@ -40,7 +40,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     RunViewController *vc = [segue destinationViewController];
-    if ([segue.identifier isEqualToString:@"runSegue"]) {
+    if ([segue.identifier isEqualToString:@"promptSegue"]) {
         vc.game = _game;
     }
 }

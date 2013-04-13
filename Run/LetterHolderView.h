@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LetterView.h"
+@class LetterView;
 
 @interface LetterHolderView : UIView
 
 @property bool taken;
+@property NSString* letter;
+
 - (bool)placeLetter:(id)letter;
 - (void)setVacant;
+
 @end

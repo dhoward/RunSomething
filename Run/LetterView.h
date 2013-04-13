@@ -7,14 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LetterHolderView.h"
+@class LetterHolderView;
 
 @interface LetterView : UIImageView
 
 @property int startX;
 @property int startY;
+@property NSString* letter;
 @property LetterHolderView* holder;
 
+- (void) setWithLetter: (NSString*) letter;
 - (bool) placeLetterInHolder:(LetterHolderView*) holder;
 - (bool) tapLetterToHolder:(LetterHolderView*) holder;
 - (bool) hasHolder;

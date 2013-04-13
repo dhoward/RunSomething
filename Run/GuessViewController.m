@@ -49,15 +49,10 @@
     
     int i = 0;
     for (LetterView *iView in self.view.subviews) {
-        if ([iView isMemberOfClass:[LetterView class]]) {
-            UILabel* myLabel = [[UILabel alloc] init];
-            myLabel.text = [GuessViewController alphabet][i];
-            myLabel.backgroundColor = [UIColor colorWithRed:100 green:0 blue:0 alpha:0];
-            myLabel.frame = CGRectMake(0, 0, 50, 50);
-            myLabel.textAlignment = NSTextAlignmentCenter;
+        if ([iView isMemberOfClass:[LetterView class]]) {            
+            [iView setWithLetter: [GuessViewController alphabet][i]];            
             iView.startX = iView.frame.origin.x;
-            iView.startY = iView.frame.origin.y;
-            [iView addSubview:myLabel];
+            iView.startY = iView.frame.origin.y;            
             i++;
         }
     }
@@ -71,8 +66,10 @@
         if ([iView isMemberOfClass:[LetterView class]]) {
             if (CGRectContainsPoint(iView.frame, loc)) {
                 for(int i=0; i<letterHolders.count; i++) {
-                    if([iView tapLetterToHolder:(LetterHolderView*)letterHolders[i]])
+                    if([iView tapLetterToHolder:(LetterHolderView*)letterHolders[i]]) {
+                        [self checkWord];
                         return;
+                    }
                 }
             }
         }
@@ -125,14 +122,25 @@
         }
     }
     
-    if(!foundTarget){
-//        self.dragObject.frame = CGRectMake(self.dragObject.startX, self.dragObject.startY,
-//                                           self.dragObject.frame.size.width,
-//                                           self.dragObject.frame.size.height);
+    if(!foundTarget)
         [self.dragObject returnHome];
-        NSLog(@"Return Home");
-    } else {
-        NSLog(@"Found holder");
+    
+    [self checkWord];
+}
+
+- (void) checkWord {
+    NSLog(@"CHECK WORD");
+    int letterCount = letterHolders.count;
+    NSMutableString* guessWord = [NSMutableString stringWithCapacity:letterCount];
+    for(int i=0; i< letterCount; i++) {
+        NSString *theLetter = ((LetterHolderView*)letterHolders[i]).letter;
+        NSLog(@"%@", theLetter);
+        if( theLetter != nil ) {
+            [guessWord appendString: theLetter];
+            NSLog(@"%@", guessWord);
+            if([guessWord isEqualToString:@"ABCDE"])
+                [self performSegueWithIdentifier:@"correctSegue" sender:self];
+        }
     }
 }
 
@@ -145,7 +153,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     AnswerViewController *vc = [segue destinationViewController];
-    if ([segue.identifier isEqualToString:@"answerSegue"]) {
+    if ([segue.identifier isEqualToString:@"correctSegue"]) {
         vc.game = _game;
     }
 }

@@ -7,11 +7,13 @@
 //
 
 #import "LetterView.h"
+#import "LetterHolderView.h"
 
 @implementation LetterView
 
 @synthesize startX;
 @synthesize startY;
+@synthesize letter;
 @synthesize holder;
 
 - (id)initWithFrame:(CGRect)frame
@@ -19,6 +21,18 @@
     self = [super initWithFrame:frame];
     if (self) { }
     return self;
+}
+
+- (void) setWithLetter: (NSString*) theLetter
+{
+    letter = theLetter;
+    
+    UILabel* myLabel = [[UILabel alloc] init];
+    myLabel.text = letter;
+    myLabel.backgroundColor = [UIColor colorWithRed:100 green:0 blue:0 alpha:0];
+    myLabel.frame = CGRectMake(0, 0, 50, 50);
+    myLabel.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:myLabel];
 }
 
 - (bool) hasHolder
@@ -50,6 +64,7 @@
     self.center = theHolder.center;
     self.holder = theHolder;
     theHolder.taken = true;
+    theHolder.letter = letter;
     self.holder = theHolder;
     return true;
 }

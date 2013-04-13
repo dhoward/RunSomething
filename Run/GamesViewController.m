@@ -11,7 +11,7 @@
 #import "AFJSONRequestOperation.h"
 #import "GamesViewController.h"
 #import "RunViewController.h"
-#import "AnswerViewController.h"
+#import "GuessViewController.h"
 #import "Game.h"
 #import "User.h"
 #import "GameTableCell.h"
@@ -172,7 +172,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"guessSegue"]) {
-        AnswerViewController *vc = [segue destinationViewController];
+        GuessViewController *vc = [segue destinationViewController];
         vc.game = _chosenGame;
     } else if([segue.identifier isEqualToString:@"startGameSegue"]) {
         RunViewController *vc = [segue destinationViewController];
