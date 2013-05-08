@@ -22,6 +22,12 @@
 
 - (void) viewDidLoad {
     
+    NSArray *fonts = [UIFont fontNamesForFamilyName:@"Oxygen"];
+    
+    for(NSString *string in fonts){
+        NSLog(@"%@", string);
+    }
+    
     RunAppDelegate *appDelegate = (RunAppDelegate *)[[UIApplication sharedApplication] delegate];
     _currentUser = appDelegate.currentUser;
     
@@ -33,6 +39,8 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [_gamesTable insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     [_gamesTable setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    _gamesTable.layer.cornerRadius = 5;
+    _gamesTable.layer.masksToBounds = YES;
     [self getGames];
 }
 
@@ -134,6 +142,16 @@
     static NSString *simpleTableIdentifier = @"GameTableCellPrototype";
     
     GameTableCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    UIImage *image = [UIImage imageNamed:@"tablecell-bg.png"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.contentMode = UIViewContentModeScaleToFill;
+    cell.backgroundView = imageView;
+    
+    UIFont *customFont = [UIFont fontWithName:@"Oxygen-Bold.ttf" size:35];
+    cell.gameLabel.font = customFont;
+    
+    cell.profilePhoto.layer.cornerRadius = 4;
+    cell.profilePhoto.clipsToBounds = YES;
     
     if (cell == nil) {
         cell = [[GameTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
@@ -153,6 +171,34 @@
     NSArray *array = [dictionary objectForKey:@"games"];
     _chosenGame = [array objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"guessSegue" sender: self];
+}
+
+-(CGFloat)tableView:(UITableView*)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 43;
+}
+
+-(UIView*)tableView:(UITableView*)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+    UILabel *sectionTitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 320, 30)];
+    [sectionTitle setFrame:CGRectMake(12, 8, 300, 30)];
+    
+    if(section == 0)
+        sectionTitle.text = @"Your Turn";
+    else
+        sectionTitle.text = @"Waiting for Turn";
+    
+    sectionTitle.font = [UIFont fontWithName:@"Oxygen-Bold.ttf" size:35];
+    sectionTitle.textColor = [UIColor colorWithWhite:1 alpha:1];
+    sectionTitle.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
+        
+    UIImageView *sectionHeaderBG = [[UIImageView alloc] init];
+    headerView.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"table-header.png"]];
+        
+    [headerView addSubview:sectionTitle];
+    [headerView addSubview:sectionHeaderBG];
+    return headerView;
 }
 
 - (IBAction)pickFriendsButtonClick:(id)sender {

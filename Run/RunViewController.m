@@ -162,6 +162,14 @@
     [self performSegueWithIdentifier: @"returnToGamesSegue" sender: self];
 }
 
+- (IBAction)togglePencilOptions:(id)sender {
+    _pencilOptions.hidden = !_pencilOptions.hidden;
+}
+
+- (IBAction)toggleColorOptions:(id)sender {
+    _colorOptions.hidden = !_colorOptions.hidden;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

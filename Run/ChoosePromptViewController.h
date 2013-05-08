@@ -21,4 +21,9 @@
 @property Prompt *chosenPrompt;
 @property (strong, nonatomic) Game *game;
 
+@property (weak, nonatomic) IBOutlet UILabel *screenLabel;
+@property (weak, nonatomic) IBOutlet UILabel *easyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *mediumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *hardLabel;
+
 @end

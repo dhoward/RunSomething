@@ -19,6 +19,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIFont *customFont = [UIFont fontWithName:@"Oxygen-Regular.ttf" size:12];
+    _easyLabel.font = customFont;
+    _easyLabel.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.2];
+    _mediumLabel.font = customFont;
+    _mediumLabel.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.2];
+    _hardLabel.font = customFont;
+    _hardLabel.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.2];
+    
     NSLog(@"Getting prompts");
     NSString *requestString = @"http://localhost:3000/getPrompts";
         
@@ -33,9 +42,10 @@
                 [self parsePromptFromJson:prompt];                
             }
         
-            NSLog(@"PROMPT1: %@", _prompt1);
-            NSLog(@"PROMPT2: %@", _prompt2);
-            NSLog(@"PROMPT3: %@", _prompt3);
+            UIFont *customFont = [UIFont fontWithName:@"Oxygen-Regular.ttf" size:12];
+            _onePoint.titleLabel.font = customFont;
+            _twoPoints.titleLabel.font = customFont;
+            _threePoints.titleLabel.font = customFont;
         
             [ _onePoint setTitle:_prompt1.word forState: UIControlStateNormal];
             [ _twoPoints setTitle:_prompt2.word forState: UIControlStateNormal];

@@ -27,5 +27,12 @@
 }
 @property (strong, nonatomic) Game *game;
 @property (strong, nonatomic) Prompt *prompt;
+@property (weak, nonatomic) IBOutlet UIView *pencilOptions;
+@property (weak, nonatomic) IBOutlet UIView *colorOptions;
+@property (weak, nonatomic) IBOutlet UIButton *pencilButton;
+@property (weak, nonatomic) IBOutlet UIButton *colorButton;
 -(void)drawUserPoint;
+-(IBAction)togglePencilOptions:(id)sender;
+-(IBAction)toggleColorOptions:(id)sender;
+
 @end

@@ -44,6 +44,8 @@
     [FBProfilePictureView class];
     [application setStatusBarHidden:YES];
     
+    _window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"AppBackground.png"]];
+    
     UIViewController *navController = self.window.rootViewController;
     [(UINavigationController *)navController setNavigationBarHidden:YES animated:NO];
     

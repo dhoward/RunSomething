@@ -40,9 +40,9 @@
     letterHolders = [[NSMutableArray alloc] init];
     for(int i=0; i<5; i++) {
         LetterHolderView* newView = [[LetterHolderView alloc] init];
-        newView.backgroundColor = [UIColor blackColor];
+        newView.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"letter-holder.png"]];
         newView.taken = false;
-        newView.frame = CGRectMake(10+(i*60.0), 300.0, 50, 50);
+        newView.frame = CGRectMake(10+(i*60.0), 300.0, 38, 37);
         [self.view addSubview:newView];
         [letterHolders addObject:newView];
     }

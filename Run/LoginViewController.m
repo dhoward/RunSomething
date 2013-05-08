@@ -18,7 +18,8 @@
 
 @implementation LoginViewController
 
-- (void) viewWillAppear:(BOOL)animated {    
+- (void) viewWillAppear:(BOOL)animated {
+    self.view.backgroundColor = [UIColor clearColor];
     if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
         [self FBLogin:nil];
     }
