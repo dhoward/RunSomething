@@ -81,13 +81,15 @@
     
     CGPoint currentPoint = [mapView convertCoordinate:mapView.userLocation.coordinate toPointToView:mapView];
     
+    NSLog(@"%f %f", currentPoint.x, currentPoint.y);
+    
     if(!isDrawing){
         lastPoint = currentPoint;
         return;
     }
 	
-	UIGraphicsBeginImageContext(self.view.frame.size);
-	[drawing.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+	UIGraphicsBeginImageContext(mapView.frame.size);
+	[drawing.image drawInRect:CGRectMake(0, 0, mapView.frame.size.width, mapView.frame.size.height)];
 	CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
 	CGContextSetLineWidth(UIGraphicsGetCurrentContext(), lineSize);
 	CGContextSetStrokeColorWithColor(UIGraphicsGetCurrentContext(), color);

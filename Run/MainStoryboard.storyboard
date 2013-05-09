@@ -252,7 +252,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="CSB-Sn-WdX">
                                 <rect key="frame" x="0.0" y="52" width="320" height="335"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mYP-Yo-2Ov">
                                 <rect key="frame" x="123" y="359" width="74" height="74"/>
@@ -609,6 +609,75 @@
         <image name="snapshot-button.png" width="39" height="39"/>
         <image name="start-game-button.png" width="222" height="54"/>
     </resources>
+    <classes>
+        <class className="AnswerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AnswerViewController.h"/>
+        </class>
+        <class className="ChoosePromptViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChoosePromptViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="choosePrompt:"/>
+                <relationship kind="outlet" name="easyLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hardLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mediumLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="onePoint" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="screenLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="threePoints" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="twoPoints" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="FBProfilePictureView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FBProfilePictureView.h"/>
+        </class>
+        <class className="GameTableCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GameTableCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="gameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="profilePhoto" candidateClass="FBProfilePictureView"/>
+            </relationships>
+        </class>
+        <class className="GamesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GamesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="pickFriendsButtonClick:"/>
+                <relationship kind="outlet" name="gamesTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="selectedFriendsView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="GuessViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GuessViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="guessImage" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="LetterView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LetterView.h"/>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="FBLogin:"/>
+            </relationships>
+        </class>
+        <class className="RunViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RunViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="captureScreen:"/>
+                <relationship kind="action" name="enableDRawing:"/>
+                <relationship kind="action" name="setColor:"/>
+                <relationship kind="action" name="setLineSize:"/>
+                <relationship kind="action" name="toggleColorOptions:"/>
+                <relationship kind="action" name="togglePencilOptions:"/>
+                <relationship kind="outlet" name="colorButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="colorOptions" candidateClass="UIView"/>
+                <relationship kind="outlet" name="drawing" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="pencilButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="pencilOptions" candidateClass="UIView"/>
+                <relationship kind="outlet" name="promptLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
