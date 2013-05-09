@@ -5,6 +5,9 @@
         <attribute name="opponentFacebookId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="opponentName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="points" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="promptImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="promptPoints" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="promptWord" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="yourMove" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
@@ -13,7 +16,7 @@
         <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Game" positionX="-20" positionY="162" width="128" height="120"/>
+        <element name="Game" positionX="-20" positionY="162" width="128" height="165"/>
         <element name="User" positionX="160" positionY="192" width="128" height="90"/>
     </elements>
 </model>

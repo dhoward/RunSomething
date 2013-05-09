@@ -250,6 +250,12 @@
 - (Game*) parseGameFromJson: (NSDictionary*)json {
     Game *newGame = (Game*)[[NSManagedObject alloc] initWithEntity:_gameEntity insertIntoManagedObjectContext:_context];
     newGame.gameId = [json objectForKey:@"_id"];
+    newGame.promptWord = [[json objectForKey:@"lastMove"] objectForKey:@"word"];
+    newGame.promptPoints = [[json objectForKey:@"lastMove"] objectForKey:@"points"];
+    
+    NSString *imgString = [[json objectForKey:@"lastMove"] objectForKey:@"image"];
+    
+    newGame.promptImage = imgString;
     
     NSString *playerKey = @"player1";
     if([[[json objectForKey:@"player1"] objectForKey:@"_id"] isEqualToString: _currentUser.userId]) {

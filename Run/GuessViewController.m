@@ -37,20 +37,48 @@
     UITapGestureRecognizer *myLabelTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(letterTapHandler:)];
     [self.view addGestureRecognizer:myLabelTap];
     
+    //_guessImage.image = [UIImage imageNamed: _game, ];
+    dispatch_async(dispatch_get_global_queue(0,0), ^{
+        NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: _game.promptImage]];
+        if ( data == nil )
+            return;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // WARNING: is the cell still using the same data by this point??
+            _guessImage.image = [UIImage imageWithData: data];
+        });
+    });
+    
+    NSMutableArray *guessLetters = [NSMutableArray array];
+    for (NSInteger charIdx=0; charIdx < _game.promptWord.length; charIdx++) {
+        // Do something with character at index charIdx, for example:
+        NSString *s = [NSString stringWithFormat:@"%c", [_game.promptWord characterAtIndex:charIdx]];
+        [guessLetters addObject:s];
+    }
+    
+    while(guessLetters.count < 12) {
+        NSUInteger randomIndex = arc4random() % [[GuessViewController alphabet] count];
+        [guessLetters addObject:[GuessViewController alphabet][randomIndex]];
+    }
+    
+    guessLetters = [GuessViewController shuffleArray:guessLetters];
+    
     letterHolders = [[NSMutableArray alloc] init];
-    for(int i=0; i<5; i++) {
+    int totalWidth = (38 * _game.promptWord.length) + (7 * (_game.promptWord.length - 1));
+    int startPosition = 160 - totalWidth/2;
+    
+    for(int i=0; i < _game.promptWord.length; i++) {
         LetterHolderView* newView = [[LetterHolderView alloc] init];
         newView.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"letter-holder.png"]];
         newView.taken = false;
-        newView.frame = CGRectMake(10+(i*60.0), 300.0, 38, 37);
+        newView.frame = CGRectMake(startPosition+(i*45.0), 434.0, 38, 37);
         [self.view addSubview:newView];
         [letterHolders addObject:newView];
     }
     
     int i = 0;
     for (LetterView *iView in self.view.subviews) {
-        if ([iView isMemberOfClass:[LetterView class]]) {            
-            [iView setWithLetter: [GuessViewController alphabet][i]];            
+        if ([iView isMemberOfClass:[LetterView class]]) {
+            [iView setWithLetter:[guessLetters[i] uppercaseString]];
             iView.startX = iView.frame.origin.x;
             iView.startY = iView.frame.origin.y;            
             i++;
@@ -138,7 +166,7 @@
         if( theLetter != nil ) {
             [guessWord appendString: theLetter];
             NSLog(@"%@", guessWord);
-            if([guessWord isEqualToString:@"ABCDE"])
+            if([guessWord isEqualToString:[_game.promptWord uppercaseString]])
                 [self performSegueWithIdentifier:@"correctSegue" sender:self];
         }
     }
@@ -170,6 +198,18 @@
     }
     
     return _alphabet;
+}
+
++ (NSMutableArray*)shuffleArray:(NSMutableArray*)array {
+    
+    NSMutableArray *temp = [[NSMutableArray alloc] initWithArray:array];
+    
+    for(NSUInteger i = [array count]; i > 1; i--) {
+        NSUInteger j = arc4random_uniform(i);
+        [temp exchangeObjectAtIndex:i-1 withObjectAtIndex:j];
+    }
+    
+    return [NSArray arrayWithArray:temp];
 }
 
 @end

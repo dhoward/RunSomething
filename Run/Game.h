@@ -15,6 +15,9 @@
 
 @property (nonatomic, retain) NSString * gameId;
 @property (nonatomic, retain) NSNumber * points;
+@property (nonatomic, retain) NSNumber * promptPoints;
+@property (nonatomic, retain) NSString * promptWord;
+@property (nonatomic, retain) NSString * promptImage;
 @property (nonatomic, retain) NSString * opponentName;
 @property (nonatomic, retain) NSNumber * opponentFacebookId;
 @property (nonatomic) BOOL yourMove;

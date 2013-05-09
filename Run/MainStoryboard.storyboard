@@ -475,67 +475,72 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="letters-holder.png" id="3xF-9s-8sg">
-                                <rect key="frame" x="-4" y="343" width="328" height="117"/>
+                                <rect key="frame" x="-4" y="370" width="328" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="letter-bg.png" id="4Wh-kN-jt2" customClass="LetterView">
-                                <rect key="frame" x="12" y="407" width="39" height="39"/>
+                                <rect key="frame" x="13" y="417" width="39" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="letter-bg.png" id="GxA-1z-oEl" customClass="LetterView">
-                                <rect key="frame" x="119" y="409" width="39" height="39"/>
+                                <rect key="frame" x="117" y="417" width="39" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="letter-bg.png" id="AK0-CI-sSk" customClass="LetterView">
-                                <rect key="frame" x="65" y="409" width="39" height="39"/>
+                                <rect key="frame" x="65" y="417" width="39" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="letter-bg.png" id="Byw-x8-qRL" customClass="LetterView">
-                                <rect key="frame" x="119" y="358" width="39" height="39"/>
+                                <rect key="frame" x="117" y="375" width="39" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="letter-bg.png" id="mem-j5-93d" customClass="LetterView">
-                                <rect key="frame" x="65" y="358" width="39" height="39"/>
+                                <rect key="frame" x="65" y="375" width="39" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="letter-bg.png" id="Pc9-22-Kgg" customClass="LetterView">
-                                <rect key="frame" x="232" y="409" width="39" height="39"/>
+                                <rect key="frame" x="218" y="417" width="39" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="letter-bg.png" id="brV-4s-63k" customClass="LetterView">
-                                <rect key="frame" x="176" y="409" width="39" height="39"/>
+                                <rect key="frame" x="167" y="417" width="39" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="letter-bg.png" id="6RY-fU-19Y" customClass="LetterView">
-                                <rect key="frame" x="232" y="358" width="39" height="39"/>
+                                <rect key="frame" x="218" y="375" width="39" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="letter-bg.png" id="fw3-6A-fEC" customClass="LetterView">
-                                <rect key="frame" x="275" y="409" width="39" height="39"/>
+                                <rect key="frame" x="270" y="417" width="39" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="letter-bg.png" id="Y7I-VD-NLd" customClass="LetterView">
-                                <rect key="frame" x="275" y="358" width="39" height="39"/>
+                                <rect key="frame" x="270" y="375" width="39" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="letter-bg.png" id="coY-Ux-4rr" customClass="LetterView">
-                                <rect key="frame" x="176" y="358" width="39" height="39"/>
+                                <rect key="frame" x="167" y="375" width="39" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="letter-bg.png" id="2Yc-Od-2Xg" customClass="LetterView">
-                                <rect key="frame" x="12" y="358" width="39" height="39"/>
+                                <rect key="frame" x="13" y="375" width="39" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="XTt-RF-wpS">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="335"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                         </subviews>
@@ -543,6 +548,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="WlR-rJ-scI"/>
                     <connections>
+                        <outlet property="guessImage" destination="XTt-RF-wpS" id="yfQ-7d-IrF"/>
                         <segue destination="ghF-TE-VAC" kind="push" identifier="correctSegue" id="G3v-6w-5Bl"/>
                     </connections>
                 </viewController>
@@ -603,72 +609,6 @@
         <image name="snapshot-button.png" width="39" height="39"/>
         <image name="start-game-button.png" width="222" height="54"/>
     </resources>
-    <classes>
-        <class className="AnswerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AnswerViewController.h"/>
-        </class>
-        <class className="ChoosePromptViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChoosePromptViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="choosePrompt:"/>
-                <relationship kind="outlet" name="easyLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="hardLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mediumLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="onePoint" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="screenLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="threePoints" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="twoPoints" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="FBProfilePictureView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FBProfilePictureView.h"/>
-        </class>
-        <class className="GameTableCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GameTableCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="gameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="profilePhoto" candidateClass="FBProfilePictureView"/>
-            </relationships>
-        </class>
-        <class className="GamesViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GamesViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="pickFriendsButtonClick:"/>
-                <relationship kind="outlet" name="gamesTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="selectedFriendsView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="GuessViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GuessViewController.h"/>
-        </class>
-        <class className="LetterView" superclassName="UIImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LetterView.h"/>
-        </class>
-        <class className="LoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="FBLogin:"/>
-            </relationships>
-        </class>
-        <class className="RunViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RunViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="captureScreen:"/>
-                <relationship kind="action" name="enableDRawing:"/>
-                <relationship kind="action" name="setColor:"/>
-                <relationship kind="action" name="setLineSize:"/>
-                <relationship kind="action" name="toggleColorOptions:"/>
-                <relationship kind="action" name="togglePencilOptions:"/>
-                <relationship kind="outlet" name="colorButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="colorOptions" candidateClass="UIView"/>
-                <relationship kind="outlet" name="drawing" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="pencilButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="pencilOptions" candidateClass="UIView"/>
-                <relationship kind="outlet" name="promptLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

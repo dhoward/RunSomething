@@ -125,7 +125,7 @@
             NSLog(@"CURRENT USER ID: %@", currentUser.userId);
             NSLog(@"IMAGE URL: %@", image.url);
             
-            NSString *queryString = [NSString stringWithFormat:@"user=%@&game=%@&prompt=%@&image=%@", currentUser.userId, _game.gameId, _prompt.promptId, image.url];
+            NSString *queryString = [NSString stringWithFormat:@"user=%@&game=%@&prompt=%@&promptWord=%@&promptPoints=%@&image=%@", currentUser.userId, _game.gameId, _prompt.promptId, _prompt.word, _prompt.points, image.url];
             NSString *requestString = [NSString stringWithFormat:@"http://localhost:3000/makeMove?%@", queryString];
                     
             NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestString]

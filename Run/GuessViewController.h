@@ -20,5 +20,6 @@
 
 @property (nonatomic, strong) LetterView *dragObject;
 @property (nonatomic, assign) CGPoint touchOffset;
+@property (weak, nonatomic) IBOutlet UIImageView *guessImage;
 
 @end

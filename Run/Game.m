@@ -16,5 +16,8 @@
 @dynamic opponentName;
 @dynamic opponentFacebookId;
 @dynamic yourMove;
+@dynamic promptPoints;
+@dynamic promptWord;
+@dynamic promptImage;
 
 @end
