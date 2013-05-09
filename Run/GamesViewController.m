@@ -147,7 +147,7 @@
     imageView.contentMode = UIViewContentModeScaleToFill;
     cell.backgroundView = imageView;
     
-    UIFont *customFont = [UIFont fontWithName:@"Oxygen-Bold.ttf" size:35];
+    UIFont *customFont = [UIFont fontWithName:@"Oxygen-Bold" size:14];
     cell.gameLabel.font = customFont;
     
     cell.profilePhoto.layer.cornerRadius = 4;
@@ -164,8 +164,8 @@
     cell.gameLabel.text = game.opponentName;
     
     if(!game.yourMove){
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.userInteractionEnabled = NO;
+        //cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        //cell.userInteractionEnabled = NO;
     }
     
     return cell;
@@ -195,7 +195,7 @@
     else
         sectionTitle.text = @"Waiting for Turn";
     
-    sectionTitle.font = [UIFont fontWithName:@"Oxygen-Bold.ttf" size:35];
+    sectionTitle.font = [UIFont fontWithName:@"Oxygen-Bold" size:18];
     sectionTitle.textColor = [UIColor colorWithWhite:1 alpha:1];
     sectionTitle.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
         

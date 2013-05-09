@@ -30,7 +30,10 @@
     UILabel* myLabel = [[UILabel alloc] init];
     myLabel.text = letter;
     myLabel.backgroundColor = [UIColor colorWithRed:100 green:0 blue:0 alpha:0];
-    myLabel.frame = CGRectMake(0, 0, 38, 37);
+    UIFont *customFont = [UIFont fontWithName:@"Oxygen-Regular" size:20];
+    myLabel.font = customFont;
+    myLabel.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1];
+    myLabel.frame = CGRectMake(0, -2, 38, 37);
     myLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:myLabel];
 }

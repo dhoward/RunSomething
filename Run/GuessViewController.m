@@ -78,7 +78,7 @@
     int i = 0;
     for (LetterView *iView in self.view.subviews) {
         if ([iView isMemberOfClass:[LetterView class]]) {
-            [iView setWithLetter:[guessLetters[i] uppercaseString]];
+            [iView setWithLetter:[guessLetters[i] uppercaseString]];            
             iView.startX = iView.frame.origin.x;
             iView.startY = iView.frame.origin.y;            
             i++;
@@ -157,15 +157,12 @@
 }
 
 - (void) checkWord {
-    NSLog(@"CHECK WORD");
     int letterCount = letterHolders.count;
     NSMutableString* guessWord = [NSMutableString stringWithCapacity:letterCount];
     for(int i=0; i< letterCount; i++) {
         NSString *theLetter = ((LetterHolderView*)letterHolders[i]).letter;
-        NSLog(@"%@", theLetter);
         if( theLetter != nil ) {
             [guessWord appendString: theLetter];
-            NSLog(@"%@", guessWord);
             if([guessWord isEqualToString:[_game.promptWord uppercaseString]])
                 [self performSegueWithIdentifier:@"correctSegue" sender:self];
         }

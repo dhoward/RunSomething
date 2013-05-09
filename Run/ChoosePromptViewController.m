@@ -20,7 +20,7 @@
 {
     [super viewDidLoad];
     
-    UIFont *customFont = [UIFont fontWithName:@"Oxygen-Regular.ttf" size:12];
+    UIFont *customFont = [UIFont fontWithName:@"Oxygen-Regular" size:12];
     _easyLabel.font = customFont;
     _easyLabel.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.2];
     _mediumLabel.font = customFont;
@@ -42,7 +42,7 @@
                 [self parsePromptFromJson:prompt];                
             }
         
-            UIFont *customFont = [UIFont fontWithName:@"Oxygen-Regular.ttf" size:12];
+            UIFont *customFont = [UIFont fontWithName:@"Oxygen-Regular" size:12];
             _onePoint.titleLabel.font = customFont;
             _twoPoints.titleLabel.font = customFont;
             _threePoints.titleLabel.font = customFont;
