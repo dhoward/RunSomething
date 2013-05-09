@@ -18,6 +18,8 @@
 
 @implementation RunViewController
 
+//@synthesize _runCoordinates = runCoordinates;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 	mouseMoved = 0;
@@ -27,6 +29,7 @@
     mapInitted = false;
     
     promptLabel.text = _prompt.word;
+    runCoordinates = [NSMutableArray array];
     
     NSLog(@"prompt chosen: %@", _prompt);
 }
@@ -80,8 +83,6 @@
 - (void)drawUserPoint {
     
     CGPoint currentPoint = [mapView convertCoordinate:mapView.userLocation.coordinate toPointToView:mapView];
-    
-    NSLog(@"%f %f", currentPoint.x, currentPoint.y);
     
     if(!isDrawing){
         lastPoint = currentPoint;

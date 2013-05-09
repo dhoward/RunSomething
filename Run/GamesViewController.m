@@ -162,6 +162,12 @@
     Game* game = [array objectAtIndex:indexPath.row];
     cell.profilePhoto.profileID = [game.opponentFacebookId stringValue];
     cell.gameLabel.text = game.opponentName;
+    
+    if(!game.yourMove){
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.userInteractionEnabled = NO;
+    }
+    
     return cell;
 }
 
@@ -229,6 +235,11 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+- (BOOL)friendPickerViewController:(FBFriendPickerViewController *)friendPicker
+                 shouldIncludeUser:(id <FBGraphUser>)user {
+    return [[user objectForKey:@"installed"] boolValue];
+}
+
 - (void) createGame: (NSString*)opponentId {
     NSLog(@"Create game");
     NSString *queryString = [NSString stringWithFormat:@"player1=%@&player2=%@", _currentUser.facebookId, opponentId];
@@ -261,6 +272,8 @@
     if([[[json objectForKey:@"player1"] objectForKey:@"_id"] isEqualToString: _currentUser.userId]) {
         playerKey = @"player2";     
     }
+    
+    NSLog(@"Comparing: %@, %@, %d", [[json objectForKey:@"lastMove"] objectForKey:@"player"], _currentUser.userId,[[[json objectForKey:@"lastMove"] objectForKey:@"player"] isEqualToString:_currentUser.userId]);
     
     newGame.opponentName = [[json objectForKey:playerKey] objectForKey:@"name" ];
     newGame.opponentFacebookId = [[json objectForKey:playerKey] objectForKey:@"facebookId" ];

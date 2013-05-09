@@ -24,6 +24,7 @@
     struct CGColor *color;
     bool isDrawing;
     bool mapInitted;
+    NSMutableArray * runCoordinates;
 }
 @property (strong, nonatomic) Game *game;
 @property (strong, nonatomic) Prompt *prompt;
