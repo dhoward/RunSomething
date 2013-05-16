@@ -97,6 +97,10 @@
 		326483C21738B84E0045280F /* black_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 326483C01738B84E0045280F /* black_circle@2x.png */; };
 		32777C95171D320C00561619 /* AppBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 32777C94171D320C00561619 /* AppBackground.png */; };
 		32777C97171D327300561619 /* AppBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32777C96171D327300561619 /* AppBackground@2x.png */; };
+		3279D800173C7677000F5951 /* YanoneKaffeesatz-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3279D7FF173C7677000F5951 /* YanoneKaffeesatz-Bold.ttf */; };
+		3279D801173C7872000F5951 /* YanoneKaffeesatz-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3279D7FF173C7677000F5951 /* YanoneKaffeesatz-Bold.ttf */; };
+		3279D804173DAC99000F5951 /* pause_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3279D802173DAC99000F5951 /* pause_button.png */; };
+		3279D805173DAC99000F5951 /* pause_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3279D803173DAC99000F5951 /* pause_button@2x.png */; };
 		327EB8DA1728EAC900BD51CB /* tablecell-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 327EB8D81728EAC900BD51CB /* tablecell-bg.png */; };
 		327EB8DB1728EAC900BD51CB /* tablecell-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 327EB8D91728EAC900BD51CB /* tablecell-bg@2x.png */; };
 		32FEE8911728F5C000D6FC0E /* Oxygen-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32FEE8901728F5C000D6FC0E /* Oxygen-Bold.ttf */; };
@@ -234,6 +238,9 @@
 		326483C01738B84E0045280F /* black_circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black_circle@2x.png"; sourceTree = "<group>"; };
 		32777C94171D320C00561619 /* AppBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppBackground.png; sourceTree = "<group>"; };
 		32777C96171D327300561619 /* AppBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppBackground@2x.png"; sourceTree = "<group>"; };
+		3279D7FF173C7677000F5951 /* YanoneKaffeesatz-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-Bold.ttf"; sourceTree = "<group>"; };
+		3279D802173DAC99000F5951 /* pause_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause_button.png; sourceTree = "<group>"; };
+		3279D803173DAC99000F5951 /* pause_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause_button@2x.png"; sourceTree = "<group>"; };
 		327EB8D81728EAC900BD51CB /* tablecell-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tablecell-bg.png"; sourceTree = "<group>"; };
 		327EB8D91728EAC900BD51CB /* tablecell-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tablecell-bg@2x.png"; sourceTree = "<group>"; };
 		32FEE8901728F5C000D6FC0E /* Oxygen-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oxygen-Bold.ttf"; sourceTree = "<group>"; };
@@ -393,6 +400,8 @@
 				3264839E173477960045280F /* color-button@2x.png */,
 				3264839F173477960045280F /* draw-button.png */,
 				326483A0173477960045280F /* draw-button@2x.png */,
+				3279D802173DAC99000F5951 /* pause_button.png */,
+				3279D803173DAC99000F5951 /* pause_button@2x.png */,
 				326483A1173477960045280F /* pencil-button.png */,
 				326483A2173477960045280F /* pencil-button@2x.png */,
 				326483A3173477960045280F /* snapshot-button.png */,
@@ -414,6 +423,7 @@
 				32622AC616D9A034003E7A26 /* InfoPlist.strings */,
 				32622AC916D9A034003E7A26 /* main.m */,
 				32622ACB16D9A034003E7A26 /* Run-Prefix.pch */,
+				3279D7FF173C7677000F5951 /* YanoneKaffeesatz-Bold.ttf */,
 				32622ACF16D9A034003E7A26 /* Default.png */,
 				32622AD116D9A034003E7A26 /* Default@2x.png */,
 				32622AD316D9A034003E7A26 /* Default-568h@2x.png */,
@@ -538,6 +548,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3279D801173C7872000F5951 /* YanoneKaffeesatz-Bold.ttf in Resources */,
 				32622AC816D9A034003E7A26 /* InfoPlist.strings in Resources */,
 				32622AD016D9A034003E7A26 /* Default.png in Resources */,
 				32622AD216D9A034003E7A26 /* Default@2x.png in Resources */,
@@ -581,6 +592,8 @@
 				326483BE1738B4DC0045280F /* brush_pallette@2x.png in Resources */,
 				326483C11738B84E0045280F /* black_circle.png in Resources */,
 				326483C21738B84E0045280F /* black_circle@2x.png in Resources */,
+				3279D804173DAC99000F5951 /* pause_button.png in Resources */,
+				3279D805173DAC99000F5951 /* pause_button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,6 +602,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32622AEC16D9A035003E7A26 /* InfoPlist.strings in Resources */,
+				3279D800173C7677000F5951 /* YanoneKaffeesatz-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

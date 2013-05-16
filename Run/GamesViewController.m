@@ -42,6 +42,12 @@
     _gamesTable.layer.cornerRadius = 5;
     _gamesTable.layer.masksToBounds = YES;
     [self getGames];
+    
+    self.friendPickerController = [[FBFriendPickerViewController alloc] init];
+    self.friendPickerController.title = @"Pick Friends";
+    self.friendPickerController.allowsMultipleSelection = false;
+    self.friendPickerController.delegate = self;
+    [self.friendPickerController loadData];
 }
 
 - (void) loadGames {
@@ -207,17 +213,15 @@
     return headerView;
 }
 
-- (IBAction)pickFriendsButtonClick:(id)sender {
-    if (self.friendPickerController == nil) {
-        self.friendPickerController = [[FBFriendPickerViewController alloc] init];
-        self.friendPickerController.title = @"Pick Friends";
-        self.friendPickerController.allowsMultipleSelection = false;
-        self.friendPickerController.delegate = self;
-    }
-    
-    [self.friendPickerController loadData];
+- (IBAction)pickFriendsButtonClick:(id)sender {        
     [self.friendPickerController clearSelection];    
     [self presentViewController:self.friendPickerController animated:YES completion:nil];
+}
+
+- (void)friendPickerViewControllerDataDidChange:(FBFriendPickerViewController *)friendPicker {
+    NSInteger section = 0;
+    NSInteger theCount = [self.friendPickerController.tableView numberOfRowsInSection:section];
+    _friendsCount.text = [NSString stringWithFormat: @"%i friends playing", theCount ];
 }
 
 - (void)facebookViewControllerDoneWasPressed:(id)sender {

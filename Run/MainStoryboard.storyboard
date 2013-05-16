@@ -120,11 +120,19 @@
                                     <outlet property="delegate" destination="kYV-Vd-Awd" id="fPD-Yg-CH0"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000000000013" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qhK-lk-t4N">
+                                <rect key="frame" x="117" y="429" width="151" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="xPP-1e-Icr"/>
                     <connections>
+                        <outlet property="friendsCount" destination="qhK-lk-t4N" id="l0l-zj-b58"/>
                         <outlet property="gamesTable" destination="7ks-pn-VhC" id="Y9G-zO-tNY"/>
                         <segue destination="he1-4t-2NE" kind="push" identifier="guessSegue" id="Qpx-ho-2BZ"/>
                         <segue destination="CSS-qH-dUy" kind="push" identifier="startGameSegue" id="aVa-Tr-ca3"/>
@@ -258,7 +266,7 @@
                                 <rect key="frame" x="123" y="359" width="74" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" backgroundImage="draw-button.png">
+                                <state key="normal" image="draw-button.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -273,18 +281,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Running a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Cz-ZY-M6t">
-                                        <rect key="frame" x="11" y="2" width="78" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="running a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Cz-ZY-M6t">
+                                        <rect key="frame" x="11" y="4" width="71" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Running a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JuU-Ht-Yxk">
-                                        <rect key="frame" x="11" y="20" width="280" height="34"/>
+                                        <rect key="frame" x="11" y="17" width="280" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0039215686274509803" green="0.43137254901960786" blue="0.061844206204379561" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0039215686274509803" green="0.43137254901960786" blue="0.061844206204379561" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="S4z-xe-Rf3">
@@ -458,7 +467,9 @@
                         <outlet property="mapView" destination="F79-zB-UAc" id="a0R-fa-LTZ"/>
                         <outlet property="pencilButton" destination="dZ2-7f-C1p" id="6Xg-Qv-me9"/>
                         <outlet property="pencilOptions" destination="3uW-hg-VDB" id="iwg-nY-DPU"/>
+                        <outlet property="promptHolder" destination="duJ-DW-n4h" id="mxg-mN-nyw"/>
                         <outlet property="promptLabel" destination="JuU-Ht-Yxk" id="hSP-pA-Qre"/>
+                        <outlet property="runningA" destination="2Cz-ZY-M6t" id="mfO-eK-saX"/>
                         <segue destination="kYV-Vd-Awd" kind="push" identifier="returnToGamesSegue" id="vlg-R4-HJr"/>
                     </connections>
                 </viewController>
@@ -609,6 +620,78 @@
         <image name="snapshot-button.png" width="39" height="39"/>
         <image name="start-game-button.png" width="222" height="54"/>
     </resources>
+    <classes>
+        <class className="AnswerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AnswerViewController.h"/>
+        </class>
+        <class className="ChoosePromptViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChoosePromptViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="choosePrompt:"/>
+                <relationship kind="outlet" name="easyLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hardLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mediumLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="onePoint" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="screenLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="threePoints" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="twoPoints" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="FBProfilePictureView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FBProfilePictureView.h"/>
+        </class>
+        <class className="GameTableCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GameTableCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="gameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="profilePhoto" candidateClass="FBProfilePictureView"/>
+            </relationships>
+        </class>
+        <class className="GamesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GamesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="pickFriendsButtonClick:"/>
+                <relationship kind="outlet" name="friendsCount" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="gamesTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="selectedFriendsView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="GuessViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GuessViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="guessImage" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="LetterView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LetterView.h"/>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="FBLogin:"/>
+            </relationships>
+        </class>
+        <class className="RunViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RunViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="captureScreen:"/>
+                <relationship kind="action" name="enableDRawing:"/>
+                <relationship kind="action" name="setColor:"/>
+                <relationship kind="action" name="setLineSize:"/>
+                <relationship kind="action" name="toggleColorOptions:"/>
+                <relationship kind="action" name="togglePencilOptions:"/>
+                <relationship kind="outlet" name="colorButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="colorOptions" candidateClass="UIView"/>
+                <relationship kind="outlet" name="drawing" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="pencilButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="pencilOptions" candidateClass="UIView"/>
+                <relationship kind="outlet" name="promptHolder" candidateClass="UIView"/>
+                <relationship kind="outlet" name="promptLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="runningA" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

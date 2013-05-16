@@ -28,7 +28,17 @@
     mapView.delegate = self;
     mapInitted = false;
     
-    promptLabel.text = _prompt.word;
+    promptLabel.text = [_prompt.word uppercaseString];
+    UIFont *customFont = [UIFont fontWithName:@"YanoneKaffeesatz-Bold" size:22];
+    promptLabel.font = customFont;
+    UIFont *customFont2 = [UIFont fontWithName:@"Oxygen-Regular" size:12];
+    runningA.font = customFont2;
+    
+    promptHolder.clipsToBounds = NO;
+    promptHolder.layer.shadowColor = [[UIColor blackColor] CGColor];
+    promptHolder.layer.shadowOffset = CGSizeMake(0,5);
+    promptHolder.layer.shadowOpacity = 0.5;
+
     runCoordinates = [NSMutableArray array];
     
     NSLog(@"prompt chosen: %@", _prompt);
@@ -78,6 +88,14 @@
 
 - (IBAction)enableDRawing:(id) sender {
     isDrawing = !isDrawing;
+    
+    if(isDrawing) {
+        UIImage *image = [UIImage imageNamed:@"pause_button.png"];
+        [sender setImage:image forState:UIControlStateNormal];
+    } else {
+        UIImage *image = [UIImage imageNamed:@"draw-button.png"];
+        [sender setImage:image forState:UIControlStateNormal];
+    }
 }
 
 - (void)drawUserPoint {

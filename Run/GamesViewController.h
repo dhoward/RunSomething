@@ -24,5 +24,6 @@
 @property Game *chosenGame;
 
 - (IBAction)pickFriendsButtonClick:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *friendsCount;
 
 @end

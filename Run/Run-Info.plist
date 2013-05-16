@@ -50,6 +50,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>YanoneKaffeesatz-Bold.ttf</string>
 		<string>Oxygen-Regular.ttf</string>
 		<string>Oxygen-Bold.ttf</string>
 	</array>
