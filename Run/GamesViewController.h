@@ -23,6 +23,9 @@
 @property NSEntityDescription *gameEntity;
 @property Game *chosenGame;
 
+@property (weak, nonatomic) IBOutlet UIView *startGamePopup;
+- (IBAction)togglePopup:(id)sender;
+- (IBAction)pickRandomButtonClick:(id)sender;
 - (IBAction)pickFriendsButtonClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *friendsCount;
 

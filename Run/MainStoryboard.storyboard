@@ -78,7 +78,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="pickFriendsButtonClick:" destination="kYV-Vd-Awd" eventType="touchUpInside" id="jW1-Qd-Wv7"/>
+                                    <action selector="togglePopup:" destination="kYV-Vd-Awd" eventType="touchUpInside" id="n6L-W8-ZX9"/>
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" id="ipw-J1-v6d">
@@ -127,6 +127,65 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view hidden="YES" contentMode="scaleToFill" id="Pf2-Vs-RIg">
+                                <rect key="frame" x="20" y="115" width="280" height="219"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3JI-dk-9Tz">
+                                        <rect key="frame" x="29" y="76" width="222" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" backgroundImage="pick_friend.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pickFriendsButtonClick:" destination="kYV-Vd-Awd" eventType="touchUpInside" id="NlU-gX-oCA"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="H4A-T9-S80">
+                                        <rect key="frame" x="29" y="138" width="222" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" backgroundImage="pick_stranger.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pickRandomButtonClick:" destination="kYV-Vd-Awd" eventType="touchUpInside" id="HmJ-h0-Ot9"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Who do you want to play?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oAu-BP-sRQ">
+                                        <rect key="frame" x="29" y="31" width="196" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="m8g-Y2-HBZ">
+                                        <rect key="frame" x="252" y="9" width="21" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="X">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="togglePopup:" destination="kYV-Vd-Awd" eventType="touchUpInside" id="i1E-Xg-lfh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
@@ -134,6 +193,7 @@
                     <connections>
                         <outlet property="friendsCount" destination="qhK-lk-t4N" id="l0l-zj-b58"/>
                         <outlet property="gamesTable" destination="7ks-pn-VhC" id="Y9G-zO-tNY"/>
+                        <outlet property="startGamePopup" destination="Pf2-Vs-RIg" id="0gS-Va-S2A"/>
                         <segue destination="he1-4t-2NE" kind="push" identifier="guessSegue" id="Qpx-ho-2BZ"/>
                         <segue destination="CSS-qH-dUy" kind="push" identifier="startGameSegue" id="aVa-Tr-ca3"/>
                     </connections>
@@ -617,6 +677,8 @@
         <image name="login-button.png" width="443" height="108"/>
         <image name="logo.png" width="395" height="273"/>
         <image name="pencil-button.png" width="39" height="39"/>
+        <image name="pick_friend.png" width="222" height="54"/>
+        <image name="pick_stranger.png" width="222" height="54"/>
         <image name="snapshot-button.png" width="39" height="39"/>
         <image name="start-game-button.png" width="222" height="54"/>
     </resources>
@@ -651,9 +713,12 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GamesViewController.h"/>
             <relationships>
                 <relationship kind="action" name="pickFriendsButtonClick:"/>
+                <relationship kind="action" name="pickRandomButtonClick:"/>
+                <relationship kind="action" name="togglePopup:"/>
                 <relationship kind="outlet" name="friendsCount" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="gamesTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="selectedFriendsView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="startGamePopup" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="GuessViewController" superclassName="UIViewController">

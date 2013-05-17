@@ -213,9 +213,17 @@
     return headerView;
 }
 
+- (IBAction)togglePopup:(id)sender {
+    _startGamePopup.hidden = !_startGamePopup.hidden;
+}
+
 - (IBAction)pickFriendsButtonClick:(id)sender {        
     [self.friendPickerController clearSelection];    
     [self presentViewController:self.friendPickerController animated:YES completion:nil];
+}
+
+- (IBAction)pickRandomButtonClick:(id)sender {
+
 }
 
 - (void)friendPickerViewControllerDataDidChange:(FBFriendPickerViewController *)friendPicker {
