@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 RDG. All rights reserved.
 //
 
+#import "AFJSONRequestOperation.h"
 #import "GuessViewController.h"
 #import "AnswerViewController.h"
 #import "LetterView.h"
@@ -164,7 +165,7 @@
         if( theLetter != nil ) {
             [guessWord appendString: theLetter];
             if([guessWord isEqualToString:[_game.promptWord uppercaseString]])
-                [self performSegueWithIdentifier:@"correctSegue" sender:self];
+                [self correctAnswer];
         }
     }
 }
@@ -180,7 +181,52 @@
     AnswerViewController *vc = [segue destinationViewController];
     if ([segue.identifier isEqualToString:@"correctSegue"]) {
         vc.game = _game;
+        vc.answeredCorrectly = _answeredCorrectly;
     }
+}
+
+-(void)correctAnswer
+{
+    _answeredCorrectly = true;
+    
+    NSString *myRequestString = [NSString stringWithFormat:@"game=%@&points=%@", _game.gameId, _game.promptPoints];
+    NSString *requestString = [NSString stringWithFormat:@"http://localhost:3000/correctAnswer?%@", myRequestString];
+    
+    NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestString]
+                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                        timeoutInterval:60.0];
+    [theRequest setHTTPMethod: @"POST"];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest: theRequest];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Success!");
+        [self performSegueWithIdentifier:@"correctSegue" sender:self];
+    } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Failure");
+    }];    
+    [operation start];
+}
+
+-(IBAction)giveUp:(id)sender
+{
+    _answeredCorrectly = false;
+    
+    NSString *myRequestString = [NSString stringWithFormat:@"game=%@", _game.gameId];
+    NSString *requestString = [NSString stringWithFormat:@"http://localhost:3000/giveUp?%@", myRequestString];
+    
+    NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestString]
+                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                        timeoutInterval:60.0];
+    [theRequest setHTTPMethod: @"POST"];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest: theRequest];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Success!");
+        [self performSegueWithIdentifier:@"correctSegue" sender:self];
+    } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Failure");
+    }];
+    [operation start];
 }
 
 + (NSArray *)alphabet

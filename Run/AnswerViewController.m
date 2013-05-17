@@ -29,6 +29,19 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     NSLog(@"ANSWERVC: %@", _game);
+    if(_answeredCorrectly)
+        [self correctAnswer];
+    else
+        [self incorrectAnswer];
+}
+
+- (void)correctAnswer {
+    
+}
+
+- (void)incorrectAnswer {
+    _correctLabel.text = @"Wrong muthafucka!";
+    _nextButton.titleLabel.text = @"Ugh fine";
 }
 
 - (void)didReceiveMemoryWarning

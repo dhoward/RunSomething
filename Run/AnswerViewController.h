@@ -12,5 +12,8 @@
 @interface AnswerViewController : UIViewController
 
 @property (strong, nonatomic) Game *game;
+@property bool answeredCorrectly;
+@property (weak, nonatomic) IBOutlet UILabel *correctLabel;
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
 @end

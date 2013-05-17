@@ -252,14 +252,14 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (BOOL)friendPickerViewController:(FBFriendPickerViewController *)friendPicker
-                 shouldIncludeUser:(id <FBGraphUser>)user {
-    return [[user objectForKey:@"installed"] boolValue];
-}
+//- (BOOL)friendPickerViewController:(FBFriendPickerViewController *)friendPicker
+//                 shouldIncludeUser:(id <FBGraphUser>)user {
+//    return [[user objectForKey:@"installed"] boolValue];
+//}
 
 - (void) createGame: (NSString*)opponentId {
     NSLog(@"Create game");
-    NSString *queryString = [NSString stringWithFormat:@"player1=%@&player2=%@", _currentUser.facebookId, opponentId];
+    NSString *queryString = [NSString stringWithFormat:@"user=%@&player2=%@", _currentUser.facebookId, opponentId];
     NSString *requestString = [NSString stringWithFormat:@"http://localhost:3000/createGame?%@", queryString];
     
     NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestString]
@@ -278,6 +278,7 @@
 - (Game*) parseGameFromJson: (NSDictionary*)json {
     Game *newGame = (Game*)[[NSManagedObject alloc] initWithEntity:_gameEntity insertIntoManagedObjectContext:_context];
     newGame.gameId = [json objectForKey:@"_id"];
+    newGame.points = [json objectForKey:@"points"];
     newGame.promptWord = [[json objectForKey:@"lastMove"] objectForKey:@"word"];
     newGame.promptPoints = [[json objectForKey:@"lastMove"] objectForKey:@"points"];
     
@@ -290,11 +291,18 @@
         playerKey = @"player2";     
     }
     
-    NSLog(@"Comparing: %@, %@, %d", [[json objectForKey:@"lastMove"] objectForKey:@"player"], _currentUser.userId,[[[json objectForKey:@"lastMove"] objectForKey:@"player"] isEqualToString:_currentUser.userId]);
+    //NSLog(@"Comparing: %@, %@, %d", [[json objectForKey:@"lastMove"] objectForKey:@"player"], _currentUser.userId,[[[json objectForKey:@"lastMove"] objectForKey:@"player"] isEqualToString:_currentUser.userId]);
+    
+    //bool x = !([json objectForKey:@"lastMove"] == 0);
+    //bool y = ![[[json objectForKey:@"lastMove"] objectForKey:@"player"] isEqualToString:_currentUser.userId];
+    //bool z = !([json objectForKey:@"lastMove"] == 0) && ![[[json objectForKey:@"lastMove"] objectForKey:@"player"] isEqualToString:_currentUser.userId];
     
     newGame.opponentName = [[json objectForKey:playerKey] objectForKey:@"name" ];
     newGame.opponentFacebookId = [[json objectForKey:playerKey] objectForKey:@"facebookId" ];
-    newGame.yourMove = ![[[json objectForKey:@"lastMove"] objectForKey:@"player"] isEqualToString:_currentUser.userId];
+    
+    bool opponentMovedLast = !([json objectForKey:@"lastMove"] == 0) && ![[[json objectForKey:@"lastMove"] objectForKey:@"player"] isEqualToString:_currentUser.userId];
+    bool createdGameDidntMove = [[json objectForKey:@"creator"] isEqualToString:_currentUser.userId] && [json objectForKey:@"lastMove"] == 0;
+    newGame.yourMove = opponentMovedLast || createdGameDidntMove;
     NSLog(@"Your move: %d", newGame.yourMove);
     return newGame;
 }
