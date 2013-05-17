@@ -138,9 +138,9 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
     if(section == 0)
-        return @"Yo move";
+        return @"Your move";
     else
-        return @"Nacho move";
+        return @"Waiting for move";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -155,6 +155,9 @@
     
     UIFont *customFont = [UIFont fontWithName:@"Oxygen-Bold" size:14];
     cell.gameLabel.font = customFont;
+
+    UIFont *customFont2 = [UIFont fontWithName:@"Oxygen-Bold" size:10];
+    cell.pointsLabel.font = customFont2;
     
     cell.profilePhoto.layer.cornerRadius = 4;
     cell.profilePhoto.clipsToBounds = YES;
@@ -168,6 +171,8 @@
     Game* game = [array objectAtIndex:indexPath.row];
     cell.profilePhoto.profileID = [game.opponentFacebookId stringValue];
     cell.gameLabel.text = game.opponentName;
+    NSLog(@"%@", game.points);
+    cell.pointsLabel.text = [game.points stringValue];
     
     if(!game.yourMove){
         //cell.selectionStyle = UITableViewCellSelectionStyleNone;

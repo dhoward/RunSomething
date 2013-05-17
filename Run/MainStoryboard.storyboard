@@ -100,9 +100,17 @@
                                                     <rect key="frame" x="10" y="6" width="48" height="48"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                 </view>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="gameLabel" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YbO-Rc-20U">
-                                                    <rect key="frame" x="77" y="0.0" width="187" height="60"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YbO-Rc-20U">
+                                                    <rect key="frame" x="77" y="5" width="187" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="21"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qyf-mL-Lz9">
+                                                    <rect key="frame" x="77" y="26" width="187" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
@@ -111,6 +119,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="gameLabel" destination="YbO-Rc-20U" id="hJC-lz-LUk"/>
+                                            <outlet property="pointsLabel" destination="qyf-mL-Lz9" id="7tX-bu-PZs"/>
                                             <outlet property="profilePhoto" destination="Pvd-cM-E2L" id="rgy-Mt-9Mz"/>
                                         </connections>
                                     </tableViewCell>
@@ -689,7 +698,6 @@
         <class className="ChoosePromptViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChoosePromptViewController.h"/>
             <relationships>
-                <relationship kind="action" name="choosePrompt:"/>
                 <relationship kind="outlet" name="easyLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="hardLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="mediumLabel" candidateClass="UILabel"/>
@@ -706,6 +714,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GameTableCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="gameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pointsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="profilePhoto" candidateClass="FBProfilePictureView"/>
             </relationships>
         </class>

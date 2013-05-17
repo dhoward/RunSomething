@@ -12,4 +12,5 @@
 @interface GameTableCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *gameLabel;
 @property (strong, nonatomic) IBOutlet FBProfilePictureView *profilePhoto;
+@property (weak, nonatomic) IBOutlet UILabel *pointsLabel;
 @end
