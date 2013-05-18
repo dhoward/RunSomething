@@ -187,7 +187,12 @@
     NSDictionary *dictionary = [_games objectAtIndex:indexPath.section];
     NSArray *array = [dictionary objectForKey:@"games"];
     _chosenGame = [array objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:@"guessSegue" sender: self];
+    
+    if (_chosenGame.promptGuessed) {
+        [self performSegueWithIdentifier:@"startGameSegue" sender: self];
+    } else {
+        [self performSegueWithIdentifier:@"guessSegue" sender: self];
+    }
 }
 
 -(CGFloat)tableView:(UITableView*)tableView heightForHeaderInSection:(NSInteger)section
@@ -228,7 +233,7 @@
 }
 
 - (IBAction)pickRandomButtonClick:(id)sender {
-
+    [self createRandomGame];
 }
 
 - (void)friendPickerViewControllerDataDidChange:(FBFriendPickerViewController *)friendPicker {
@@ -275,16 +280,38 @@
     [operation start];
 }
 
+- (void) createRandomGame {
+    NSLog(@"Create random game");
+    NSString *queryString = [NSString stringWithFormat:@"user=%@", _currentUser.facebookId];
+    NSString *requestString = [NSString stringWithFormat:@"http://localhost:3000/createRandomGame?%@", queryString];
+    
+    NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestString]
+                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                        timeoutInterval:60.0];
+    [theRequest setHTTPMethod: @"POST"];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:theRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSDictionary *game = (NSDictionary *) JSON;
+        _chosenGame = [self parseGameFromJson: game];
+        [self performSegueWithIdentifier: @"startGameSegue" sender: self];
+    } failure:nil];
+    [operation start];
+}
+
 - (Game*) parseGameFromJson: (NSDictionary*)json {
     Game *newGame = (Game*)[[NSManagedObject alloc] initWithEntity:_gameEntity insertIntoManagedObjectContext:_context];
     newGame.gameId = [json objectForKey:@"_id"];
     newGame.points = [json objectForKey:@"points"];
+    newGame.promptId = [[json objectForKey:@"lastMove"] objectForKey:@"_id"];
     newGame.promptWord = [[json objectForKey:@"lastMove"] objectForKey:@"word"];
     newGame.promptPoints = [[json objectForKey:@"lastMove"] objectForKey:@"points"];
+    newGame.promptGuessed = [[[json objectForKey:@"lastMove"] objectForKey:@"guessed"] boolValue];
     
     NSString *imgString = [[json objectForKey:@"lastMove"] objectForKey:@"image"];
     
     newGame.promptImage = imgString;
+        NSLog(@"PROMPT GUESSED: %@", [[json objectForKey:@"lastMove"] objectForKey:@"guessed"]);
+    NSLog(@"PROMPT GUESSED: %i", newGame.promptGuessed);
     
     NSString *playerKey = @"player1";
     if([[[json objectForKey:@"player1"] objectForKey:@"_id"] isEqualToString: _currentUser.userId]) {

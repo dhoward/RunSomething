@@ -189,7 +189,7 @@
 {
     _answeredCorrectly = true;
     
-    NSString *myRequestString = [NSString stringWithFormat:@"game=%@&points=%@", _game.gameId, _game.promptPoints];
+    NSString *myRequestString = [NSString stringWithFormat:@"game=%@&points=%@&move=%@", _game.gameId, _game.promptPoints, _game.promptId];
     NSString *requestString = [NSString stringWithFormat:@"http://localhost:3000/correctAnswer?%@", myRequestString];
     
     NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestString]
@@ -211,7 +211,7 @@
 {
     _answeredCorrectly = false;
     
-    NSString *myRequestString = [NSString stringWithFormat:@"game=%@", _game.gameId];
+    NSString *myRequestString = [NSString stringWithFormat:@"game=%@&move=%@", _game.gameId, _game.promptId];
     NSString *requestString = [NSString stringWithFormat:@"http://localhost:3000/giveUp?%@", myRequestString];
     
     NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestString]

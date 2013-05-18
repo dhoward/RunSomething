@@ -16,8 +16,10 @@
 @dynamic opponentName;
 @dynamic opponentFacebookId;
 @dynamic yourMove;
+@dynamic promptId;
 @dynamic promptPoints;
 @dynamic promptWord;
 @dynamic promptImage;
+@dynamic promptGuessed;
 
 @end
